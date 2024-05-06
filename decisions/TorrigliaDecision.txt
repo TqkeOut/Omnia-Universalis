@@ -1,0 +1,39 @@
+country_decisions = {
+
+	ou_request_bobbian_support = {
+		major = yes
+		color = { 231 181 12 }
+		potential = {
+			tag = TRG
+			is_subject_of = GEN
+			BOB = {
+				exists = yes
+				is_subject = no
+				mission_completed = bob_break_free_from_milan
+			}
+			NOT = { has_country_flag = ou_requested_bobbian_support }
+		}
+		provinces_to_highlight = { owned_by = BOB }
+		allow = {
+			BOB = {
+				has_opinion = {
+					who = ROOT
+					value = 25
+				}
+				dip_power = 25
+			}
+		}
+		effect = {
+			BOB = { 
+				country_event = {
+					id = omnia_universalis_events.1
+					days = 7
+				}
+			}
+			add_dip_power = -25
+			set_country_flag = ou_requested_bobbian_support
+		}
+		ai_will_do = { factor = 1 }
+		ai_importance = 100
+	}
+}

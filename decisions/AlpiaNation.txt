@@ -1,0 +1,263 @@
+country_decisions = {
+
+	form_alpia_nation_area = {
+		major = yes
+		potential = {
+			NOT = { tag = ALP }
+			OR = {
+				primary_culture = occitain
+				primary_culture = ligurian
+			}
+			capital_scope = { area = rhone_area }
+		}
+		provinces_to_highlight = {
+			area = rhone_area
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = ALP }
+			OR = {
+				primary_culture = occitain
+				primary_culture = ligurian
+			}
+			capital_scope = { area = rhone_area }
+			is_at_war = no
+			rhone_area = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+		effect = {
+			change_tag = ALP
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			add_prestige = 20
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+	form_alpia_nation_subregion = {
+		major = yes
+		potential = {
+			NOT = { tag = ALP }
+			OR = {
+				primary_culture = swiss
+				primary_culture = austrian
+				primary_culture = venetian
+			}
+			OR = {
+				capital_scope = { area = romandie_area }
+				capital_scope = { area = switzerland_area }
+				capital_scope = { area = tirol_area }
+				capital_scope = { area = south_tirol_area }
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = romandie_area
+				area = switzerland_area 
+				area = tirol_area 
+				area = south_tirol_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = ALP }
+			OR = {
+				primary_culture = swiss
+				primary_culture = austrian
+				primary_culture = venetian
+			}
+			OR = {
+				capital_scope = { area = romandie_area }
+				capital_scope = { area = switzerland_area }
+				capital_scope = { area = tirol_area }
+				capital_scope = { area = south_tirol_area }
+			}
+			is_at_war = no
+			romandie_area = {
+				type = all
+				owned_by = ROOT
+			}
+			switzerland_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tirol_area = {
+				type = all
+				owned_by = ROOT
+			}
+			south_tirol_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			change_tag = ALP
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			add_prestige = 30
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+					is_part_of_hre = no
+				}
+				set_government_rank = 2
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 1
+	}
+	
+	form_alpia_nation_wasteland = {
+		major = yes
+		potential = {
+			NOT = { tag = ALP }
+			OR = {
+				primary_culture = swiss
+				primary_culture = austrian
+				primary_culture = bavarian
+				primary_culture = venetian
+				primary_culture = lombard
+				primary_culture = piedmontese
+				primary_culture = occitain
+			}
+			OR = {
+				capital_scope = { area = south_tirol_area }
+				capital_scope = { province_id = 205 }
+				capital_scope = { province_id = 1871 }
+				capital_scope = { province_id = 1867 }
+				capital_scope = { province_id = 4721 }
+				capital_scope = { province_id = 165 }
+				capital_scope = { province_id = 166 }
+				capital_scope = { province_id = 4722 }
+				capital_scope = { province_id = 1873 }
+				capital_scope = { province_id = 73 }
+				capital_scope = { province_id = 76 }
+				capital_scope = { province_id = 132 }
+				capital_scope = { province_id = 4759 }
+				capital_scope = { province_id = 1768 }
+				capital_scope = { province_id = 4758 }
+				capital_scope = { province_id = 111 }
+				capital_scope = { province_id = 1774 }
+				capital_scope = { province_id = 110 }
+				capital_scope = { province_id = 107 }
+				capital_scope = { province_id = 4739 }
+				capital_scope = { province_id = 4740 }
+				capital_scope = { province_id = 2979 }
+				capital_scope = { province_id = 103 }
+				capital_scope = { province_id = 4727 }
+				capital_scope = { province_id = 204 }
+				capital_scope = { province_id = 5023 }
+				capital_scope = { province_id = 4958 }
+				capital_scope = { province_id = 5033 }
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = south_tirol_area 
+				province_id = 205 
+				province_id = 1871 
+				province_id = 1867 
+				province_id = 4721 
+				province_id = 165 
+				province_id = 166 
+				province_id = 4722 
+				province_id = 1873 
+				province_id = 73 
+				province_id = 76 
+				province_id = 132 
+				province_id = 4759 
+				province_id = 1768 
+				province_id = 4758 
+				province_id = 111 
+				province_id = 1774 
+				province_id = 110 
+				province_id = 107 
+				province_id = 4739 
+				province_id = 4740 
+				province_id = 2979 
+				province_id = 103 
+				province_id = 4727 
+				province_id = 204 
+				province_id = 5023 
+				province_id = 4958 
+				province_id = 5033
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = ALP }
+			full_idea_group = infrastructure_ideas
+			OR = {
+				primary_culture = swiss
+				primary_culture = austrian
+				primary_culture = bavarian
+				primary_culture = venetian
+				primary_culture = lombard
+				primary_culture = piedmontese
+				primary_culture = occitain
+			}
+			is_at_war = no
+			custom_trigger_tooltip = {
+				tooltip = ou_own_all_provinces_adjacent_to_alps_tt
+				south_tirol_area = {
+					type = all
+					owned_by = ROOT
+				}
+				owns = 205 
+				owns = 1871 
+				owns = 1867 
+				owns = 4721 
+				owns = 165 
+				owns = 166 
+				owns = 4722 
+				owns = 1873 
+				owns = 73 
+				owns = 76 
+				owns = 132 
+				owns = 4759 
+				owns = 1768 
+				owns = 4758 
+				owns = 111 
+				owns = 1774 
+				owns = 110 
+				owns = 107 
+				owns = 4739 
+				owns = 4740 
+				owns = 2979 
+				owns = 103 
+				owns = 4727 
+				owns = 204 
+				owns = 5023 
+				owns = 4958 
+				owns = 5033
+			}
+		}
+		effect = {
+			change_tag = ALP
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 1
+	}
+}

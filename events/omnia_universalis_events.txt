@@ -1,0 +1,3953 @@
+namespace = omnia_universalis_events
+
+country_event = {
+	id = omnia_universalis_events.1
+	title = "omnia_universalis_events.1.title"
+	desc = "omnia_universalis_events.1.desc"
+	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = BOB
+		ai = no
+		mission_completed = bob_break_free_from_milan
+		exists = TRG
+		TRG = { is_subject = yes }
+		NOT = { is_supporting_independence_of = TRG }
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name = "omnia_universalis_events.1.a"
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 99
+				OR = {
+					ruler_has_personality = just_personality
+					ruler_has_personality = righteous_personality
+					ruler_has_personality = tolerant_personality
+					ruler_has_personality = kind_hearted_personality
+					ruler_has_personality = calm_personality
+					ruler_has_personality = careful_personality
+					ruler_has_personality = benevolent_personality
+				}
+			}		
+		}
+		support_independence_of = TRG
+		add_dip_power = 50
+		add_mil_power = 25
+		hidden_effect = { TRG = { add_liberty_desire = 50 } }
+	}
+	option = {
+		name = "omnia_universalis_events.1.b"
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 50
+				OR = {
+					ruler_has_personality = cruel_personality
+					ruler_has_personality = greedy_personality
+					ruler_has_personality = malevolent_personality
+				}
+			}
+		}
+		add_prestige = -5
+		set_country_flag = ou_refused_to_support_torriglian_independence
+	}
+	option = {
+		name = "omnia_universalis_events.1.c"
+		trigger = {
+			ruler_has_personality = charismatic_negotiator_personality
+			hidden_trigger = { TRG = { ai = yes } }
+		}
+		ai_chance = { factor = 99 }
+		highlight = yes
+		support_independence_of = TRG
+		add_dip_power = 75
+		add_mil_power = 25
+		add_treasury = 100
+		TRG = { add_treasury = -100 }
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.2
+	title = "omnia_universalis_events.2.title"
+	desc = {
+		trigger = { 
+			OR = {
+				owner = { primary_culture = bosnian } 
+				owner = { tag = BOS } 
+			}
+		}
+		desc = "omnia_universalis_events.2.desc.a"
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				OR = {
+					owner = { primary_culture = bosnian } 
+					owner = { tag = BOS } 
+				}
+			}
+		}
+		desc = "omnia_universalis_events.2.desc.b"
+	}
+	picture = RELIGION_eventPicture
+	trigger = {
+		area = bosnia_area
+		NOT = { religion = orthodox }
+		culture = serbian
+		OR = {
+			NOT = { owner = { full_idea_group = humanist_ideas } }
+			owner = { primary_culture = bosnian } 
+			owner = { tag = BOS }
+		}
+	}
+	mean_time_to_happen = {
+		months = 6
+	}
+	option = {
+		name =  "omnia_universalis_events.2.a"
+		trigger = { NOT = { owner = { primary_culture = bosnian } } }
+		ai_chance = { 
+			factor = 65
+			modifier = {
+				factor = 10
+				owner = { tag = SER }
+			}
+			modifier = {
+				factor = 25
+				owner = { 
+					primary_culture = serbian
+					NOT = { tag = SER } 
+				}
+			}
+			modifier = {
+				factor = 30
+				owner = {  is_rival = BOS }
+			}
+			modifier = {
+				factor = 40
+				owner = { 
+					accepted_culture = serbian
+					NOT = { accepted_culture = bosnian }
+				}
+			}
+			modifier = {
+				factor = 45
+				owner = { 
+					OR = {
+						ruler_has_personality = zealot_personality
+						ruler_has_personality = pious_personality
+						ruler_has_personality = lawgiver_personality
+						ruler_has_personality = strict_personality
+						ruler_has_personality = cruel_personality
+						ruler_has_personality = greedy_personality
+						ruler_has_personality = malevolent_personality
+					}
+				}
+			}
+			modifier = {
+				factor = 95
+				owner = { 
+					OR = {
+						ruler_has_personality = just_personality
+						ruler_has_personality = righteous_personality
+						ruler_has_personality = tolerant_personality
+						ruler_has_personality = kind_hearted_personality
+						ruler_has_personality = calm_personality
+						ruler_has_personality = careful_personality
+						ruler_has_personality = benevolent_personality
+					}
+				}
+			}
+		}
+		change_culture = bosnian
+		add_local_autonomy = 25
+		owner = { add_prestige = -5 }
+	}
+	option = {
+		name =  "omnia_universalis_events.2.b"
+		trigger = { ROOT = { has_owner_culture = yes } }
+		ai_chance = { 
+			factor = 20
+			modifier = {
+				factor = 90
+				owner = { tag = SER }
+			}
+			modifier = {
+				factor = 75
+				owner = { 
+					primary_culture = serbian
+					NOT = { tag = SER } 
+				}
+			}
+			modifier = {
+				factor = 50
+				owner = {  is_rival = BOS }
+			}
+			modifier = {
+				factor = 40
+				owner = { 
+					OR = {
+						ruler_has_personality = zealot_personality
+						ruler_has_personality = pious_personality
+						ruler_has_personality = lawgiver_personality
+						ruler_has_personality = strict_personality
+						ruler_has_personality = cruel_personality
+						ruler_has_personality = greedy_personality
+						ruler_has_personality = malevolent_personality
+					}
+				}
+			}
+			modifier = {
+				factor = 20
+				owner = { 
+					accepted_culture = serbian
+					NOT = { accepted_culture = bosnian }
+				}
+			}
+			modifier = {
+				factor = 5
+				owner = { 
+					OR = {
+						ruler_has_personality = just_personality
+						ruler_has_personality = righteous_personality
+						ruler_has_personality = tolerant_personality
+						ruler_has_personality = kind_hearted_personality
+						ruler_has_personality = calm_personality
+						ruler_has_personality = careful_personality
+						ruler_has_personality = benevolent_personality
+					}
+				}
+			}
+		}
+		add_base_tax = -1
+		add_base_production = -1
+		add_base_manpower = -1
+		spawn_rebels = {
+			type = nationalist_rebels
+			size = 2
+			culture = bosnian
+			unrest = 10
+			win = yes
+		}
+		if = {
+			limit = { current_age = age_of_absolutism }
+			owner = { add_absolutism = 10 }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.2.c"
+		trigger = { 
+			NOT = { 
+				OR = {
+					owner = { primary_culture = bosnian } 
+					owner = { tag = BOS } 
+				}
+			} 
+		}
+		ai_chance = { 
+			factor = 10
+			modifier = {
+				factor = 2
+				owner = { 
+					primary_culture = serbian
+					NOT = { tag = SER } 
+				}
+			}
+			modifier = {
+				factor = 3
+				owner = {  is_rival = BOS }
+			}
+				modifier = {
+				factor = 4
+				owner = { 
+					accepted_culture = serbian
+					NOT = { accepted_culture = bosnian }
+				}
+			}
+			modifier = {
+				factor = 5
+				owner = { 
+					OR = {
+						ruler_has_personality = zealot_personality
+						ruler_has_personality = pious_personality
+						ruler_has_personality = lawgiver_personality
+						ruler_has_personality = strict_personality
+						ruler_has_personality = cruel_personality
+						ruler_has_personality = greedy_personality
+						ruler_has_personality = malevolent_personality
+					}
+				}
+			}
+			modifier = {
+				factor = 25
+				owner = { 
+					OR = {
+						ruler_has_personality = just_personality
+						ruler_has_personality = righteous_personality
+						ruler_has_personality = tolerant_personality
+						ruler_has_personality = kind_hearted_personality
+						ruler_has_personality = calm_personality
+						ruler_has_personality = careful_personality
+						ruler_has_personality = benevolent_personality
+					}
+				}
+			}
+		}
+		change_culture = bosnian
+		cede_province = BOS
+		change_controller = BOS
+		add_core = BOS
+		owner = { add_prestige = -20 }
+	}
+	option = {
+		name =  "omnia_universalis_events.2.d"
+		trigger = { 
+			NOT = { 
+				OR = {
+					owner = { primary_culture = bosnian } 
+					owner = { accepted_culture = bosnian }
+					owner = { tag = BOS }
+				}
+			} 
+		}
+		ai_chance = { factor = 5 }
+		change_culture = bosnian
+		add_province_modifier = {
+			name = ou_new_majority
+			duration = 7300
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.2.e"
+		trigger = { 
+			OR = {
+				owner = { primary_culture = bosnian } 
+				owner = { tag = BOS } 
+			}
+		}
+		ai_chance = { factor = 100 }
+		owner = {
+			add_stability = 1
+			add_prestige = 20
+		}
+		change_culture = bosnian
+	}
+	option = {
+		name =  "omnia_universalis_events.2.f"
+		trigger = { 
+			NOT = {	owner = { primary_culture = serbian } }
+			owner = { accepted_culture = bosnian } 
+			NOT = {
+				OR = {
+					owner = { primary_culture = bosnian } 
+					owner = { tag = BOS } 
+				}
+			}
+		}
+		ai_chance = { factor = 100 }
+		owner = {
+			add_prestige = 5
+			add_dip_power = -100
+		}
+		change_culture = bosnian
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.3
+	title = "omnia_universalis_events.3.title"
+	desc = "omnia_universalis_events.3.desc"
+	picture = CONQUEST_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { region = italy_region } }
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.3.a"
+		ai_chance = {
+			factor = 99
+			modifier = {
+				factor = 90
+				OR = {
+					NOT = { army_size = TRG }
+					ruler_has_personality = careful_personality
+				}
+			}
+		}
+		vassalize = TRG
+		add_prestige = 10
+	}
+	option = {
+		name =  "omnia_universalis_events.3.b"
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				OR = {
+					NOT = { army_size = TRG }
+					ruler_has_personality = careful_personality
+				}
+			}
+		}
+		add_dip_power = 100
+		add_prestige = -5
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.4
+	title = "omnia_universalis_events.4.title"
+	desc = {
+		trigger = {
+			is_subject = yes
+			overlord = { religion_group = christian }
+			religion_group = christian
+		}
+		desc ="omnia_universalis_events.4.desc.a"
+	}
+	desc = {
+		trigger = { is_subject = no }
+		desc ="omnia_universalis_events.4.desc.b"
+	}
+	desc = {
+		trigger = {
+			is_subject = yes
+			NOT = {
+				OR = {
+					overlord = { religion_group = christian }
+					religion_group = christian
+				}
+			}
+		}
+		desc ="omnia_universalis_events.4.desc.c"
+	}
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { region = france_region } }
+	fire_only_once = yes
+	trigger = {
+		tag = NEM
+		has_ruler = "(Interregnum)"
+		OR = {
+			is_subject = no
+			AND = {
+				overlord = { ai = yes }
+				ai = no
+			}
+		}
+		NOT = { has_global_flag = ou_nemours_interregnum }
+	}
+	mean_time_to_happen = { months = 216 }
+	option = {
+		name = "omnia_universalis_events.4.a"
+		ai_chance = { factor = 75 }
+		define_ruler = {
+			name = "Jacques"
+			dynasty = "d'Armagnac"
+			min_age = 18
+			claim = 50
+			adm = 5
+			dip = 3
+			mil = 4
+			male = yes
+			culture = gascon
+			religion = catholic
+		}
+		add_stability = -1
+		set_global_flag = ou_nemours_interregnum
+		if = {
+			limit = { NAV = { dynasty = "d'Evreux" } }
+			NAV = {
+				add_casus_belli = {
+					target = ROOT
+					type = cb_restore_personal_union
+					months = 300
+				}
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.4.b"
+		ai_chance = { factor = 15 }
+		trigger = {
+			is_subject = yes
+			overlord = { religion_group = christian }
+			religion_group = christian
+		}
+		overlord = { create_union = ROOT }
+	}
+	option = {
+		name = "omnia_universalis_events.4.c"
+		ai_chance = { factor = 5 }
+		add_stability = 1
+		set_global_flag = ou_nemours_interregnum
+		if = {
+			limit = { NAV = { dynasty = "d'Evreux" } }
+			NAV = { create_union = ROOT }
+			else = {
+				define_ruler = {
+					name = "Charles"
+					dynasty = "de Trastamara"
+					min_age = 23
+					claim = 75
+					adm = 2
+					dip = 2
+					mil = 1
+					male = yes
+					culture = basque
+					religion = catholic
+				}
+				define_consort = {
+					name = "Agnes"
+					country_of_origin = KLE
+					dynasty = "La Marck"
+					birth_date = 1422.1.1
+					adm = 1
+					dip = 3
+					mil = 2
+					female = yes
+					culture = hessian
+					religion = catholic
+				}
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.4.d"
+		ai_chance = { factor = 3 }
+		add_stability = -2
+		set_global_flag = ou_nemours_interregnum
+		define_ruler = {
+			min_age = 18
+			max_age = 30
+			claim = 25
+			male = yes
+			culture = cosmopolitan_french
+			religion = catholic
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.4.e"
+		ai_chance = { factor = 2 }
+		trigger = { is_subject = yes }
+		add_prestige = -5
+		overlord = {
+			country_event = {
+				id = omnia_universalis_events.5
+				days = 7
+				random = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.5
+	title = "omnia_universalis_events.5.title"
+	desc = "omnia_universalis_events.5.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { region = france_region } }
+	fire_only_once = yes
+	trigger = {
+		NEM = {
+			has_ruler = "(Interregnum)"
+			overlord = { tag = ROOT }
+		}
+		NOT = {
+			ai = yes
+			NEM = { ai = no }
+		}
+		NOT = { has_global_flag = ou_nemours_interregnum }
+	}
+	mean_time_to_happen = { months = 216 }
+	option = {
+		name = "omnia_universalis_events.5.a"
+		ai_chance = { factor = 75 }
+		NEM = {
+			define_ruler = {
+				name = "Jacques"
+				dynasty = "d'Armagnac"
+				min_age = 18
+				claim = 50
+				adm = 5
+				dip = 3
+				mil = 4
+				male = yes
+				culture = gascon
+				religion = catholic
+			}
+			add_stability = -1
+		}
+		set_global_flag = ou_nemours_interregnum
+		if = {
+			limit = { NAV = { dynasty = "d'Evreux" } }
+			NAV = {
+				add_casus_belli = {
+					target = NEM
+					type = cb_restore_personal_union
+					months = 300
+				}
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.5.b"
+		ai_chance = { factor = 5 }
+		trigger = {
+			religion_group = christian
+			government = monarchy
+		}
+		create_union = NEM
+		add_stability = -1
+		set_global_flag = ou_nemours_interregnum
+	}
+	option = {
+		name = "omnia_universalis_events.5.c"
+		ai_chance = { factor = 3 }
+		set_global_flag = ou_nemours_interregnum
+		NEM = {
+			add_stability = 1
+			if = {
+				limit = { NAV = { dynasty = "d'Evreux" } }
+				NAV = { create_union = ROOT }
+				else = {
+					define_ruler = {
+						name = "Charles"
+						dynasty = "de Trastamara"
+						min_age = 23
+						claim = 75
+						adm = 2
+						dip = 2
+						mil = 1
+						fixed = no
+						male = yes
+						culture = basque
+						religion = catholic
+					}
+					define_consort = {
+						name = "Agnes"
+						country_of_origin = KLE
+						dynasty = "La Marck"
+						birth_date = 1422.1.1
+						adm = 1
+						dip = 3
+						mil = 2
+						fixed = no
+						female = yes
+						culture = hessian
+						religion = catholic
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.5.d"
+		ai_chance = { factor = 2 }
+		set_global_flag = ou_nemours_interregnum
+		NEM = {
+			add_stability = -1
+			define_ruler = {
+				min_age = 18
+				max_age = 30
+				claim = 25
+				male = yes
+				culture = cosmopolitan_french
+				religion = NEM
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.5.e"
+		ai_chance = { factor = 15 }
+		trigger = { FROM = { ai = yes } }
+		set_global_flag = ou_nemours_interregnum
+		add_stability = -2
+		inherit = NEM
+		185 = {
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 2
+				culture = cosmopolitan_french
+				unrest = 10
+				win = yes
+				friend = NEM
+				separatists_target = NEM
+				estate = estate_nobles
+				as_if_faction = yes
+			}
+		}
+		4697 = {
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				culture = gascon
+				unrest = 5
+				win = yes
+				friend = NEM
+				separatists_target = NEM
+				estate = estate_nobles
+				as_if_faction = yes
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.5.f"
+		ai_chance = { factor = 99 }
+		trigger = { government = republic }
+		add_prestige = 10
+		set_global_flag = ou_nemours_interregnum
+		NEM = {
+			add_stability = -1
+			change_government = republic
+		}
+		185 = {
+			spawn_rebels = {
+				type = noble_rebels
+				size = 1
+				culture = cosmopolitan_french
+				unrest = 5
+				win = yes
+				estate = estate_nobles
+				as_if_faction = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.6
+	title = "omnia_universalis_events.6.title"
+	desc = "omnia_universalis_events.6.desc"
+	picture = COURT_eventPicture
+	fire_only_once = yes
+	trigger = { tag = FRA }
+	option = {
+		name =  "omnia_universalis_events.6.a"
+		ai_chance = { factor = 100 }
+		custom_tooltip = ou_france_appanages_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.7
+	title = "omnia_universalis_events.7.title"
+	desc = "omnia_universalis_events.7.desc"
+	picture = HRE_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.7.a"
+		ai_chance = {  factor = 75 }
+		add_adm_power = 100
+		add_stability = 1
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 11
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			add_trust = {
+				who = STY
+				value = 25
+			}
+			if = {
+				limit = {
+					HUN = {
+						has_regency = yes
+						is_subject = no
+					}
+				}
+				create_union = HUN
+				hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.8 } } }
+				if = {
+					limit = {
+						TRA = {
+							ai = yes
+							is_subject_of = HUN
+						}
+					}
+					HUN = { inherit = TRA }
+				}
+				else = { 
+					add_casus_belli = {
+						target = HUN
+						type = cb_restore_personal_union
+						months = 600
+					}
+				}
+			}
+			hidden_effect = { country_event = {  id = omnia_universalis_events.13 } } 
+		}
+		AAC = { grant_independence = yes }
+	}
+	option = {
+		name =  "omnia_universalis_events.7.b"
+		ai_chance = { factor = 25 }
+		add_stability = -1
+		add_casus_belli = {
+			target = HUN
+			type = cb_restore_personal_union
+			months = 60
+		}
+		add_ruler_personality = babbling_buffoon_personality
+		if = {
+			limit = { tag = HAB } 
+			switch_tag = STY
+		}
+		inherit = HAB
+		change_tag = HAB
+		HUN = {
+			add_casus_belli = {
+				target = HAB
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event = {  id = omnia_universalis_events.9 } } 
+		}
+		set_capital = 134
+		swap_non_generic_missions = yes
+		hidden_effect = { set_global_flag = austria_united }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.8
+	title = "omnia_universalis_events.8.title"
+	desc = "omnia_universalis_events.8.desc"
+	picture = HRE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.8.a"
+		ai_chance = {  factor = 100 }
+		add_legitimacy = 10
+		tooltip = { HAB = { create_union = HUN } }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.9
+	title = "omnia_universalis_events.9.title"
+	desc = "omnia_universalis_events.9.desc"
+	picture = HRE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.9.a"
+		ai_chance = {  factor = 100 }
+		define_ruler = {
+			name = "Ladislaus Posthumus"
+			dynasty = "von Habsburg" 
+			age = 11
+			claim = 80
+			adm = 3
+			dip = 3
+			mil = 2
+			fixed = yes
+			male = yes
+			culture = austrian
+			religion = catholic
+		}
+		add_casus_belli = {
+			target = HAB
+			type = cb_restore_personal_union
+			months = 60
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.10
+	title = "omnia_universalis_events.10.title"
+	desc = "omnia_universalis_events.10.desc"
+	picture = HRE_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = BOH
+		dominant_religion = catholic
+		religion = catholic
+		estate_influence = {
+			estate = estate_nobles
+			influence = 50
+		}
+		OR = {
+			HAB = { has_ruler = "Ladislaus Posthumus" }
+			HAB = { has_heir = "Ladislaus Posthumus" }
+			HUN = { has_ruler = "Ladislaus Posthumus" }
+			HUN = { has_heir = "Ladislaus Posthumus" }
+		}
+	}
+	mean_time_to_happen = { months = 24 }
+	option = {
+		name =  "omnia_universalis_events.10.a"
+		ai_chance = {  factor = 75 }
+		if = {
+			limit = {
+				OR = {
+					HAB = { has_ruler = "Ladislaus Posthumus" }
+					HAB = { has_heir = "Ladislaus Posthumus" }
+				}
+			}
+			HAB = { create_union = ROOT }
+			hidden_effect = { HAB = { country_event = {  id = omnia_universalis_events.11 } } }
+			if = {
+				limit = { 	
+					MVA = {
+						is_subject_of_type_with_overlord = {
+							who = BOH
+							type = march
+						}
+					}
+				}
+			}
+			HAB = { create_union = MVA }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					HUN = { has_ruler = "Ladislaus Posthumus" }
+					HUN = { has_heir = "Ladislaus Posthumus" }
+				}
+			}
+			HUN = { create_union = ROOT }
+			hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.11 } } }
+			if = {
+				limit = { 	
+					MVA = {
+						is_subject_of_type_with_overlord = {
+							who = BOH
+							type = march
+						}
+					}
+				}
+			}
+			HUN = { create_union = MVA }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.10.b"
+		ai_chance = { factor = 25 }
+		define_ruler = {
+			name = "Jiri"
+			dynasty = "z Podebrad" 
+			age = 32
+			claim = 50
+			adm = 5
+			dip = 4
+			mil = 3
+			fixed = yes
+			male = yes
+			culture = czech
+			religion = catholic
+		}
+		if = {
+			limit = { 
+				MVA = {
+					is_subject_of_type_with_overlord = {
+						who = ROOT
+						type = march
+					}
+				}
+			}
+			create_union = MVA
+		}
+		if = {
+			limit = {
+				OR = {
+					HAB = { has_ruler = "Ladislaus Posthumus" }
+					HAB = { has_heir = "Ladislaus Posthumus" }
+				}
+			}
+			HAB = {
+				add_casus_belli = {
+					target = ROOT
+					type = cb_restore_personal_union
+					months = 60
+				}
+				hidden_effect = { country_event = {  id = omnia_universalis_events.12 } } 
+			}
+		}
+		else = {
+			HUN = {
+				add_casus_belli = {
+					target = ROOT
+					type = cb_restore_personal_union
+					months = 60
+				}
+				hidden_effect = { country_event = {  id = omnia_universalis_events.12 } } 
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.11
+	title = "omnia_universalis_events.11.title"
+	desc = "omnia_universalis_events.11.desc"
+	picture = HRE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.11.a"
+		ai_chance = {  factor = 100 }
+		tooltip = { create_union = BOH }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.12
+	title = "omnia_universalis_events.12.title"
+	desc = "omnia_universalis_events.12.desc"
+	picture = HRE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.12.a"
+		ai_chance = {  factor = 75 }
+		add_prestige = -10
+		add_casus_belli = {
+			target = BOH
+			type = cb_restore_personal_union
+			months = 60
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.12.b"
+		ai_chance = {  factor = 25 }
+		add_prestige = -50
+		add_historical_friend = BOH
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.13
+	title = "omnia_universalis_events.13.title"
+	desc = "omnia_universalis_events.13.desc"
+	picture = HRE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.13.a"
+		ai_chance = {  factor = 100 }
+		grant_independence = yes
+		define_ruler = {
+			name = "Ladislaus Posthumus"
+			dynasty = "von Habsburg" 
+			age = 11
+			claim = 80
+			adm = 3
+			dip = 3
+			mil = 2
+			fixed = yes
+			male = yes
+			culture = austrian
+			religion = catholic
+		}
+		tooltip = { create_union = HUN }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.14
+	title = "omnia_universalis_events.14.title"
+	desc = {
+		trigger = {
+			POL = {
+				exists = yes
+				is_female = no
+				dip = 3
+			}
+		}
+		desc = "omnia_universalis_events.14.desc.a"
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				POL = {
+					exists = yes
+					is_female = no
+					dip = 3
+				}
+			}
+		}
+		desc = "omnia_universalis_events.14.desc.b"
+	}
+	picture = DEBATE_REPUBLICAN_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = HUN
+		is_year = 1445
+		NOT = { is_year = 1447 }
+		has_regency = yes
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.14.a"
+		ai_chance = {  factor = 10 }
+		STY = {
+			create_union = ROOT 
+			hidden_effect = { country_event  = { id = omnia_universalis_events.15 } }
+		}
+		POL = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.14.b"
+		ai_chance = { factor = 10 }
+		trigger = {
+			POL = {
+				exists = yes
+				is_female = no
+				dip = 3
+			}
+		}
+		POL = {
+			create_union = ROOT
+			hidden_effect = { country_event = { id = omnia_universalis_events.15 } }
+		}
+		STY = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.14.c"
+		ai_chance = { factor = 15 }
+		define_ruler = {
+			name = "Janos"
+			dynasty = "Hunyadi"
+			adm = 3
+			dip = 3
+			mil = 5
+			age = 39
+			claim = 50
+			attach_leader = "János Hunyadi"
+		}
+		add_stability = -1
+		STY = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		POL = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.14.d"
+		ai_chance = { factor = 60 }
+		trigger = { STY = { has_ruler = "Friedrich III" } }
+		STY = { 
+			country_event  = {
+				id = omnia_universalis_events.16
+				days = 7
+				random = 2
+				tooltip = ou_friedrich_offer_tt
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.15
+	title = "omnia_universalis_events.15.title"
+	desc = {
+		trigger = { tag = STY }
+		desc = "omnia_universalis_events.15.desc.a"
+	}
+	desc = {
+		trigger = { tag = POL }
+		desc = "omnia_universalis_events.15.desc.b"
+	}
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.15.a"
+		ai_chance = {  factor = 100 }
+		add_prestige = 10
+		if = {
+			limit = { tag = POL }
+			STY = {
+				add_casus_belli = {
+					target = HUN
+					type = cb_restore_personal_union
+					months = 60
+				}
+			}
+		}
+		else = {
+			POL = {
+				add_casus_belli = {
+					target = HUN
+					type = cb_restore_personal_union
+					months = 60
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.16
+	title = "omnia_universalis_events.16.title"
+	desc = "omnia_universalis_events.16.desc"
+	picture = HRE_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.16.a"
+		ai_chance = {  factor = 10 }
+		add_prestige = -10
+		add_casus_belli = {
+			target = HUN
+			type = cb_insult
+			months = 12
+		}
+		hidden_effect = {
+			HUN = {
+				country_event = { 
+					id = omnia_universalis_events.19
+					days = 1
+				}
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.16.b"
+		ai_chance = {  factor = 15 }
+		add_adm_power = 100
+		add_dip_power = 50
+		HAB = {
+			grant_independence = yes
+			add_trust = {
+				who = ROOT
+				value = 25
+			}
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 4
+				dip = 4
+				mil = 3
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = HUN
+			hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.17 } } }
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18  } }
+			hidden_effect = { set_global_flag = ladislaus_is_free }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.16.c"
+		ai_chance = {  
+			factor = 60
+			modifier = {
+				factor = 10
+				NOT = { num_of_allies = HUN }
+			}
+		}
+		declare_war_with_cb = {
+			who = HUN
+			casus_belli = cb_insult
+		}
+		hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.35 } } }
+		custom_tooltip = ou_defeat_hungary_tt
+	}
+	option = {
+		name =  "omnia_universalis_events.16.d"
+		ai_chance = { 
+			factor = 15
+			modifier = {
+				factor = 90
+				NOT = { num_of_allies = HUN }
+			}
+		}
+		hidden_effect = { country_event = { id = omnia_universalis_events.22 } }
+		custom_tooltip = ou_negotiations_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.17
+	title = "omnia_universalis_events.17.title"
+	desc = "omnia_universalis_events.17.desc"
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.17.a"
+		ai_chance = {  factor = 100 }
+		add_prestige = 10
+		tooltip = { HAB = { create_union = HUN } }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.18
+	title = "omnia_universalis_events.18.title"
+	desc = "omnia_universalis_events.18.desc"
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.18.a"
+		ai_chance = {  factor = 100 }
+		add_prestige = 10
+		grant_independence = yes
+		define_ruler = {
+			name = "Ladislaus Posthumus"
+			dynasty = "von Habsburg" 
+			age = 4
+			claim = 80
+			adm = 3
+			dip = 3
+			mil = 2
+			fixed = yes
+			male = yes
+			culture = austrian
+			religion = catholic
+		}
+		tooltip = { create_union = HUN }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.19
+	title = "omnia_universalis_events.19.title"
+	desc = "omnia_universalis_events.19.desc"
+	picture = DEBATE_REPUBLICAN_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.19.a"
+		ai_chance = {  factor = 10 }
+		STY = {
+			create_union = ROOT 
+			hidden_effect = {
+				country_event  = {
+					id = omnia_universalis_events.15
+					days = 7
+					random = 2
+				}
+			}
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.19.b"
+		ai_chance = { factor = 5 }
+		trigger = {
+			POL = {
+				is_female = no
+				dip = 3
+			}
+		}
+		POL = {
+			create_union = ROOT
+			hidden_effect = { country_event = { id = omnia_universalis_events.15 } }
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.19.c"
+		ai_chance = { factor = 10 }
+		define_ruler = {
+			name = "Janos"
+			dynasty = "Hunyadi"
+			adm = 3
+			dip = 3
+			mil = 5
+			age = 39
+			claim = 50
+			attach_leader = "János Hunyadi"
+		}
+		add_stability = -2
+		STY = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		POL = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_restore_personal_union
+				months = 60
+			}
+			hidden_effect = { country_event  = { id = omnia_universalis_events.34 } }
+		}
+		set_country_flag = ou_diet_resolved
+	}
+	option = {
+		name =  "omnia_universalis_events.19.d"
+		ai_chance = { factor = 10 }
+		trigger = {
+			NOT = {
+				OR = { 
+					has_country_flag = ou_defeated_by_friedrich
+					has_global_flag = ou_ladislaus_age_16
+					has_global_flag = ou_ladislaus_age_18
+				}
+			} 
+		}
+		declare_war_with_cb = {
+			who = STY
+			casus_belli = cb_insult
+		}
+		custom_tooltip = ou_ladislaus_explanation_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.20
+	title = "omnia_universalis_events.20.title"
+	desc = "omnia_universalis_events.20.desc"
+	picture = LAND_MILITARY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = HUN
+		OR = {
+			is_in_war = {
+				attacker_leader = HUN
+				defender_leader = STY
+				casus_belli = cb_insult
+				duration = 365
+				war_score = 50
+			}
+			is_in_war = {
+				attacker_leader = STY
+				defender_leader = HUN
+				casus_belli = cb_insult
+				duration = 365
+				war_score = -50
+			}
+		}
+		STY = { capital_scope = { controller = { tag = ROOT } } } 
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.20.a"
+		ai_chance = {  factor = 99 }
+		trigger = { HAB = { exists = yes } }
+		white_peace = STY
+		add_prestige = 20
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = HUN
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18 } } 
+		}
+		hidden_effect = { STY = { country_event = {  id = omnia_universalis_events.21 } } }
+	}
+	option = {
+		name =  "omnia_universalis_events.20.b"
+		ai_chance = { factor = 1 }
+		add_prestige = 10
+		set_country_flag = ou_defeated_friedrich
+	}
+	option = {
+		name =  "omnia_universalis_events.20.c"
+		ai_chance = { factor = 99 }
+		trigger = { HAB = { exists = no } }
+		define_ruler = {
+			name = "Ladislaus Posthumus"
+			dynasty = "von Habsburg" 
+			age = 4
+			claim = 80
+			adm = 3
+			dip = 3
+			mil = 2
+			fixed = yes
+			male = yes
+			culture = austrian
+			religion = catholic
+		}
+		hidden_effect = {
+			if = {
+				limit = { CRO = { exists = yes } }
+				create_union = CRO
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = { SLA = { exists = yes } }
+				create_union = SLA
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.21
+	title = "omnia_universalis_events.21.title"
+	desc = "omnia_universalis_events.21.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes
+	major_trigger = { tag = HUN }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.21.a"
+		ai_chance = {  factor = 100 }
+		white_peace = HUN
+		add_prestige = -20
+		custom_tooltip = ou_free_ladislaus_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.22
+	title = "omnia_universalis_events.22.title"
+	desc = "omnia_universalis_events.22.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.22.a"
+		ai_chance = { 
+			factor = 25
+			modifier = {
+				factor = 0 
+				has_country_flag = ou_refused_ducats
+			}
+		}
+		HUN = {
+			country_event = {
+				id = omnia_universalis_events.23
+				days = 7
+				random = 2
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.22.b"
+		ai_chance = { 
+			factor = 25
+			modifier = {
+				factor = 0 
+				has_country_flag = ou_refused_manpower
+			}
+		}
+		HUN = {
+			country_event = {
+				id = omnia_universalis_events.24
+				days = 7
+				random = 2
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.22.c"
+		ai_chance = { 
+			factor = 25
+			modifier = {
+				factor = 0 
+				has_country_flag = ou_refused_to_join_hre
+			}
+		}
+		HUN = {
+			country_event = {
+				id = omnia_universalis_events.25
+				days = 7
+				random = 2
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.22.d"
+		ai_chance = { factor = 25 }
+		add_favors = {
+			who = HUN
+			amount = 25
+		}
+		HUN = { hidden_effect = { country_event = {  id = omnia_universalis_events.17 } } }
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = HUN
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18 } } 
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.23
+	title = "omnia_universalis_events.23.title"
+	desc = "omnia_universalis_events.23.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.23.a"
+		ai_chance = { 
+			factor = 50
+			modifier = {
+				factor = 1 
+				NOT = { treasury = 100 }
+			}
+		}
+		add_treasury = -100
+		STY = { add_treasury = 100 }
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = ROOT
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18 } } 
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.23.b"
+		ai_chance = { factor = 50 }
+		hidden_effect = {
+			country_event = {
+				id = omnia_universalis_events.19
+				days = 7
+				random = 2
+			}
+		}
+		custom_tooltip = ou_diet_reconvenes_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.24
+	title = "omnia_universalis_events.24.title"
+	desc = "omnia_universalis_events.24.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.24.a"
+		ai_chance = { 
+			factor = 50
+			modifier = {
+				factor = 1 
+				NOT = { manpower = 10 }
+			}
+		}
+		add_manpower = -10
+		STY = { add_manpower = 10 }
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = ROOT
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18 } } 
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.24.b"
+		ai_chance = { factor = 50 }
+		hidden_effect = {
+			country_event = {
+				id = omnia_universalis_events.19
+				days = 7
+				random = 2
+			}
+		}
+		custom_tooltip = ou_diet_reconvenes_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.25
+	title = "omnia_universalis_events.25.title"
+	desc = "omnia_universalis_events.25.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.25.a"
+		ai_chance = {  factor = 50 }
+		set_in_empire = yes
+		STY = { add_imperial_influence = 10 }
+		HAB = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Ladislaus Posthumus"
+				dynasty = "von Habsburg" 
+				age = 4
+				claim = 80
+				adm = 3
+				dip = 3
+				mil = 2
+				fixed = yes
+				male = yes
+				culture = austrian
+				religion = catholic
+			}
+			create_union = ROOT
+			hidden_effect = { country_event = {  id = omnia_universalis_events.18 } } 
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.25.b"
+		ai_chance = { factor = 50 }
+		hidden_effect = {
+			country_event = {
+				id = omnia_universalis_events.19
+				days = 7
+				random = 2
+			}
+		}
+		custom_tooltip = ou_diet_reconvenes_tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.26
+	title = "omnia_universalis_events.26.title"
+	desc = "omnia_universalis_events.26.desc"
+	picture = LAND_MILITARY_eventPicture
+	major = yes
+	major_trigger = { tag = HUN }
+	fire_only_once = yes
+	trigger = {
+		tag = STY
+		OR = {
+			is_in_war = {
+				attacker_leader = HUN
+				defender_leader = STY
+				casus_belli = cb_insult
+				duration = 100
+				war_score = -20
+			}
+			is_in_war = {
+				attacker_leader = STY
+				defender_leader = HUN
+				casus_belli = cb_insult
+				duration = 100
+				war_score = 20
+			}
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.26.a"
+		ai_chance = {  factor = 24 }
+		white_peace = HUN
+		custom_tooltip = ou_ladislaus_age_16_tt
+		hidden_effect = { set_global_flag = ou_ladislaus_age_16 } 
+		add_prestige = 20
+		HUN = {
+			remove_casus_belli = {
+				target = STY
+				type = cb_insult
+			}
+		}
+		hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.19 } } }
+		hidden_effect = { HUN = { set_country_flag = ou_defeated_by_friedrich } }
+	}
+	option = {
+		name =  "omnia_universalis_events.26.b"
+		ai_chance = { factor = 75 }
+		white_peace = HUN
+		custom_tooltip = ou_ladislaus_age_18_tt
+		hidden_effect = { set_global_flag = ou_ladislaus_age_18 } 
+		add_prestige = 25
+		add_legitimacy = -10
+		HUN = {
+			remove_casus_belli = {
+				target = STY
+				type = cb_insult
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+		hidden_effect = { HUN = { country_event = {  id = omnia_universalis_events.19 } } }
+		hidden_effect = { HUN = { set_country_flag = ou_defeated_by_friedrich } }
+	}
+	option = {
+		name =  "omnia_universalis_events.26.c"
+		ai_chance = { factor = 1 }
+		add_adm_power = 50
+		hidden_effect = { HUN = { set_country_flag = ou_defeated_by_friedrich } }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.27
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = HUN
+		NOT = { had_recent_war = 0.5 }
+		OR = {
+			has_country_flag = ou_defeated_by_friedrich
+			has_country_flag = ou_defeated_friedrich
+		}
+		NOT = { has_country_flag = ou_diet_resolved }
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		ai_chance = {  factor = 100 }
+		country_event = { id = omnia_universalis_events.19 }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.28
+	title = "omnia_universalis_events.28.title"
+	desc = "omnia_universalis_events.28.desc"
+	picture = ANGRY_MOB_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = STY
+		has_global_flag = ou_ladislaus_age_18
+		NOT = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 50
+			}
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.28.a"
+		ai_chance = {  factor = 75 }
+		random_core_province = {
+			limit = { culture = austrian }
+			spawn_rebels = {
+				type = noble_rebels
+				size = 1
+				culture = austrian
+				religion = catholic
+				unrest = 10
+				estate = estate_nobles
+			}
+		}
+		HAB = {
+			random_core_province = {
+				limit = { culture = austrian }
+				spawn_rebels = {
+					type = noble_rebels
+					size = 1
+					culture = austrian
+					religion = catholic
+					unrest = 10
+					estate = estate_nobles
+				}
+			}
+		}
+		add_corruption = 1
+	}
+	option = {
+		name =  "omnia_universalis_events.28.b"
+		ai_chance = { factor = 15 }
+		custom_tooltip = ou_ladislaus_age_16_tt
+		hidden_effect = { set_global_flag = ou_ladislaus_age_16 } 
+		hidden_effect = { clr_global_flag = ou_ladislaus_age_18 } 
+		add_prestige = -5
+		add_legitimacy = -20
+	}
+	option = {
+		name =  "omnia_universalis_events.28.c"
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 99
+				ruler_has_personality = craven_personality
+			}
+		}
+		add_years_of_income = -1
+		add_corruption = 2
+		add_estate_loyalty = {
+			loyalty = 5
+			estate = estate_nobles
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.29
+	title = "omnia_universalis_events.29.title"
+	desc = "omnia_universalis_events.29.desc"
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	picture = HRE_eventPicture
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			AND = {
+				HAB = { ai = yes }
+				tag = STY
+			}
+			AND = {
+				STY = { ai = yes }
+				tag = HAB
+				NOT = {
+					AND = {
+						HAB = { ai = yes }
+						tag = STY
+						exists = HAB
+					}
+				}
+			}
+		}
+		NOT = { any_known_country = { has_ruler = "Ladislaus Posthumus" } }
+		OR = {
+			AND = {
+				is_year = 1456
+				has_global_flag = ou_ladislaus_age_16
+			}
+			AND = {
+				is_year = 1458
+				has_global_flag = ou_ladislaus_age_18
+			}
+		}
+		HAB = { NOT = { dynasty = "von Habsburg" } }
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.29.a"
+		ai_chance = {  factor = 1 }
+		if = {
+			limit = { tag = HAB }
+			grant_independence = yes
+			define_ruler = {
+				claim = 70
+				male = yes
+				age = 30
+				dynasty = "von Habsburg"
+			}
+			add_stability = -1
+		}
+		else = {
+			HAB = {
+				grant_independence = yes
+				define_ruler = {
+					claim = 70
+					male = yes
+					age = 30
+					dynasty = "von Habsburg"
+				}
+				add_stability = -1
+			}
+		}
+		if = {
+			limit = { HUN = { junior_union_with = STY }
+			HAB = { create_union = HUN }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.29.b"
+		ai_chance = { factor = 99 }
+		if = {
+			limit = { tag = HAB } 
+			switch_tag = STY
+		}
+		inherit = HAB
+		change_tag = HAB
+		set_capital = 134
+		add_prestige = 25
+		country_event = { id = ideagroups.1 } #Swap Ideas
+		swap_non_generic_missions = yes
+		austria_proper_area = {
+			limit = {
+				NOT = { owned_by = ROOT }
+			}
+			add_permanent_claim = HAB
+		}
+		inner_austria_area = {
+			limit = {
+				NOT = { owned_by = ROOT }
+			}
+			add_permanent_claim = HAB
+		}
+		set_country_flag = formed_austria_flag
+		add_casus_belli = {
+			target = HUN
+			type = cb_restore_personal_union
+			months = 60
+		}
+		add_casus_belli = {
+			target = BOH
+			type = cb_restore_personal_union
+			months = 60
+		}
+		AAC = { grant_independence = yes }
+		hidden_effect = { set_global_flag = austria_united }
+		HUN = { hidden_effect = { country_event = {  id = omnia_universalis_events.31 } } }
+		BOH = { hidden_effect = { country_event = {  id = omnia_universalis_events.31 } } }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.30
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = STY
+		is_year = 1457
+		OR = {
+			any_country = { has_ruler = "Ladislaus Posthumus" }
+			any_country = { has_heir = "Ladislaus Posthumus" }
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		ai_chance = {  factor = 100 }
+		random = {
+			chance = 75
+			every_country = {
+				limit = { has_ruler = "Ladislaus Posthumus" }
+				kill_ruler = yes
+			}
+			every_country = {
+				limit = { has_heir = "Ladislaus Posthumus" }
+				kill_heir = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.31
+	title = "omnia_universalis_events.31.title"
+	desc = "omnia_universalis_events.31.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes 
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.31.a"
+		ai_chance = {  factor = 75 }
+		grant_independence = yes
+		add_prestige = 10
+		if = {
+			limit = { tag = HUN }
+			define_ruler = {
+				name = "Matyas"
+				dynasty = "Corvin" 
+				age = 14
+				claim = 50
+				adm = 4
+				dip = 5
+				mil = 5
+				fixed = yes
+				male = yes
+				culture = hungarian
+				religion = catholic
+			}
+		}
+		else = {
+			define_ruler = {
+				name = "Jiri"
+				dynasty = "z Podebrad" 
+				age = 36
+				claim = 60
+				adm = 5
+				dip = 4
+				mil = 3
+				fixed = yes
+				male = yes
+				culture = czech
+				religion = catholic
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.31.b"
+		ai_chance = {  factor = 24 }
+		trigger = {
+			POL = {
+				has_casus_belli = {
+					type = cb_restore_personal_union
+					target = ROOT
+				}
+				is_female = no
+				dip = 3
+			}
+		}
+		POL = {
+			create_union = ROOT
+			hidden_effect = { country_event = { id = omnia_universalis_events.15 } }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.31.c"
+		ai_chance = {  factor = 1 }
+		HAB = {
+			create_union = ROOT
+			hidden_effect = { country_event = { id = omnia_universalis_events.15 } }
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.32
+	title = "omnia_universalis_events.32.title"
+	desc = "omnia_universalis_events.32.desc"
+	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = BOH
+		MVA = {
+			ai = no
+			is_subject_of = BOH
+		}
+		dynasty = "z Podebrad"
+	}
+	mean_time_to_happen = { months = 24 }
+	option = {
+		name =  "omnia_universalis_events.32.a"
+		ai_chance = {  factor = 75 }
+		inherit = MVA
+		change_estate_land_share = {
+			estate = estate_nobles
+			share = -10
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.32.b"
+		ai_chance = { factor = 25 }
+		add_mil_power = 100
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.33
+	title = "omnia_universalis_events.33.title"
+	desc = "omnia_universalis_events.33.desc"
+	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = HAB
+		TIR = {
+			ai = no
+			is_subject_of = HAB
+		}
+		has_global_flag = austria_united
+	}
+	mean_time_to_happen = { months = 24 }
+	option = {
+		name =  "omnia_universalis_events.33.a"
+		ai_chance = {  factor = 99 }
+		inherit = TIR
+		add_prestige = 10
+	}
+	option = {
+		name =  "omnia_universalis_events.33.b"
+		ai_chance = { factor = 1 }
+		add_adm_power = 100
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.34
+	title = "omnia_universalis_events.34.title"
+	desc = {
+		trigger = {
+			tag = STY
+			NOT = { HUN = { dynasty = "Hunyadi" } }
+		}
+		desc = "omnia_universalis_events.34.desc.a"
+	}
+	desc = {
+		trigger = {
+			tag = POL
+			NOT = { HUN = { dynasty = "Hunyadi" } }
+		}
+		desc = "omnia_universalis_events.34.desc.b"
+	}
+	desc = {
+		trigger = { HUN = { dynasty = "Hunyadi" } }
+		desc = "omnia_universalis_events.34.desc.c"
+	}
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.34.a"
+		ai_chance = {  factor = 100 }
+		add_casus_belli = {
+			target = HUN
+			type = cb_restore_personal_union
+			months = 144
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.35
+	title = "omnia_universalis_events.35.title"
+	desc = "omnia_universalis_events.35.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.35.a"
+		ai_chance = {  factor = 75 }
+		add_dip_power = -50
+		add_stability = -1
+	}
+	option = {
+		name =  "omnia_universalis_events.35.b"
+		ai_chance = {  factor = 25 }
+		white_peace = STY
+		add_prestige = -25
+		hidden_effect = { country_event = { id = omnia_universalis_events.19 } }
+		hidden_effect = { STY = { country_event = { id = omnia_universalis_events.26 } } }
+		custom_tooltip = ou_diet_reconvenes_tt
+		set_country_flag = ou_defeated_by_friedrich
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.36
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = STY
+		is_at_war = no
+		HAB = { junior_union_with = ROOT }
+		all_country = { NOT = { has_ruler = "Ladislaus Posthumus" } }
+		OR = {
+			AND = {
+				is_year = 1452
+				NOT = {
+					OR = {
+						has_global_flag = ou_ladislaus_age_16
+						has_global_flag = ou_ladislaus_age_18
+					}
+				}
+			}
+			AND = {
+				is_year = 1456
+				has_global_flag = ou_ladislaus_age_16
+			}
+			AND = {
+				is_year = 1458
+				has_global_flag = ou_ladislaus_age_18
+			}
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		ai_chance = {  factor = 100 }
+		country_event = { id = omnia_universalis_events.7 }
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.37
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = NOV
+		always = yes
+	}
+	mean_time_to_happen = { days = 0 }
+	option = {
+		ai_chance = {  factor = 100 }
+		1961 = { kill_units = { who = owner } }
+		1261 = { kill_units = { who = owner } }
+		32 = { kill_units = { who = owner } }
+		33 = {
+			build_to_forcelimit = {
+				heavy_ship = 0.14
+				light_ship = 0.23
+				galley = 0.1
+				transport = 0.43
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.38
+	title = "omnia_universalis_events.38.title"
+	desc = "omnia_universalis_events.38.desc"
+	picture = DIPLOMACY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = VAD
+		mission_completed = vad_ensure_longevity
+		has_heir = no
+		government = monarchy
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.38.a"
+		ai_chance = {  factor = 99 }
+		add_years_of_income = 10
+		define_heir = {
+			dynasty = "von Liechtenstein"
+			claim = 25
+			age = 18
+			male = yes
+			no_consort_with_heir = yes
+			culture = austrian
+			religion = catholic
+		}
+		add_prestige = -10
+		add_legitimacy = -25
+		add_stability = -1
+		add_dip_power = -50
+		add_adm_power = -25
+	}
+	option = {
+		name =  "omnia_universalis_events.38.b"
+		ai_chance = { factor = 1 }
+		add_prestige = 10
+		add_dip_power = -25
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.39
+	title = "omnia_universalis_events.39.title"
+	desc = "omnia_universalis_events.39.desc"
+	picture = ACCUSATION_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 4959
+		base_tax = 2
+		owner = {
+			num_of_loans = 1
+			NOT = { current_income_balance = -1 }
+			religion_group = christian
+			controls = 4959
+			NOT = { crown_land_share = 30 }
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.39.a"
+		ai_chance = { 
+			factor = 75
+			modifier = {
+				factor = 99
+				ruler_has_personality = embezzler_personality
+			}
+			modifier = {
+				factor = 1
+				ruler_has_personality = incorruptible_personality
+			}
+		}
+		add_devastation = 5
+		add_province_modifier = {
+			name = ou_false_accusations_of_witchcraft
+			duration = 7300
+		}
+		add_base_tax = -1
+		if = {
+			limit = { local_autonomy = 1 }
+			add_local_autonomy = -10
+		}
+		owner = {
+			add_years_of_income = 5
+			if = {
+				limit = { NOT = { ruler_has_personality = embezzler_personality } }
+				add_ruler_personality = embezzler_personality
+			}
+			if = {
+				limit = { ruler_has_personality = incorruptible_personality }
+				remove_ruler_personality =  incorruptible_personality
+			}
+			change_estate_land_share = {
+				estate = estate_burghers
+				share = -5
+			}
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -15
+			}
+			add_corruption = 5
+			random_list = {
+				90 = {
+					custom_tooltip = ou_we_will_be_discovered_tt
+					add_estate_loyalty = {
+						estate = estate_church
+						loyalty = -10
+					}
+					add_stability = -1
+					add_prestige = -10
+					add_adm_power = -100
+				}
+				10 = {
+					custom_tooltip = ou_no_one_finds_out_tt
+					add_adm_power = 5
+				}
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.39.b"
+		ai_chance = { factor = 25 }
+		add_dip_power = 20
+		if = {
+			limit = { owner = { capital = ROOT } }
+			add_adm_power = -10
+			else = { add_local_autonomy = 10 }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.39.c"
+		ai_chance = { factor = 99 }
+		highlight = yes
+		trigger = { owner = { ruler_has_personality = incorruptible_personality } }
+		owner = { kill_advisor = random }
+		add_corruption = -2
+		add_prestige = 10
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.40
+	title = "omnia_universalis_events.40.title"
+	desc = "omnia_universalis_events.40.desc"
+	picture = FORT_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = ENG
+		has_disaster = war_of_the_roses
+		owns = 4942
+		dynasty = "Lancaster"
+		SCO = {
+			exists = yes
+			manpower = 10
+		}
+		NOT = { manpower_percentage = 0.5 }
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.40.a"
+		ai_chance = {  factor = 75 }
+		add_prestige = -5
+		custom_tooltip = ou_sell_berwick_tt
+		SCO = {
+			country_event = {
+				id = omnia_universalis_events.41
+				days = 1
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.40.b"
+		ai_chance = { factor = 25 }
+		add_war_exhaustion = 1
+		add_prestige = 5
+	}
+	option = {
+		name =  "omnia_universalis_events.40.c"
+		ai_chance = { factor = 99 }
+		trigger = { ruler_has_personality = fierce_negotiator_personality }
+		add_prestige = 5
+		set_global_flag = ou_fierce_negotiator
+		custom_tooltip = ou_sell_berwick_tt_2
+		SCO = {
+			country_event = {
+				id = omnia_universalis_events.41
+				days = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.41
+	title = "omnia_universalis_events.41.title"
+	desc = "omnia_universalis_events.41.desc"
+	picture = FORT_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { region = british_isles_region } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.41.a"
+		ai_chance = {  factor = 75 }
+		if = {
+			limit = { has_global_flag = ou_fierce_negotiator }
+			add_manpower = -10
+			ENG = { add_manpower = 10 }
+			else = {
+				add_manpower = -8
+				ENG = { add_manpower = 8 }
+			}
+		}
+		4942 = { cede_province = ROOT }
+		add_truce_with = FROM
+		add_stability = 1
+	}
+	option = {
+		name =  "omnia_universalis_events.41.b"
+		ai_chance = {  factor = 25 }
+		add_prestige = 10
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.42
+	title = "omnia_universalis_events.42.title"
+	desc = "omnia_universalis_events.42.desc"
+	picture = GREAT_BUILDING_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 4943
+		base_tax = 2
+		owner = {
+			tag = ENG
+			dynasty = "Tudor"
+			years_of_income = 1.5
+			capital = 236
+			NOT = { legitimacy = 90 }
+			NOT = { num_of_loans = 1 }
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.42.a"
+		ai_chance = { 
+			factor = 75
+			modifier = {
+				factor = 99
+				ruler_has_personality = embezzler_personality
+			}
+		}
+		add_base_tax = 2
+		owner = {
+			add_prestige = 10
+			add_legitimacy = 10
+			add_dip_power = 25
+			add_years_of_income = -1
+			add_adm_power = -25
+			capital_scope = { add_base_tax = 1 }
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.42.b"
+		ai_chance = { factor = 25 }
+		add_base_tax = -1
+		owner = {
+			add_legitimacy = -10
+			add_prestige = -5
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.42.c"
+		ai_chance = { factor = 99 }
+		highlight = yes
+		trigger = {
+			owner = {
+				OR = {
+					ruler_has_personality = midas_touched_personality
+					ruler_has_personality = architectural_visionary_personality
+				}
+			}
+		}
+		add_base_tax = 3
+		owner = {
+			add_prestige = 15
+			add_legitimacy = 15
+			add_dip_power = 25
+			add_years_of_income = -0.75
+			add_adm_power = -50
+			capital_scope = { add_base_tax = 2 }
+		}
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.43
+	title = "omnia_universalis_events.43.title"
+	desc = "omnia_universalis_events.43.desc"
+	picture = TRADEGOODS_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 4943
+		base_production = 3
+		trade_goods = cloth
+		owned_by = ENG
+		calc_true_if = {
+			all_province = {
+				owned_by = ENG
+				region = british_isles_region
+				trade_goods = cloth
+				higher_development_than = ROOT
+			}
+			amount = 10
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.43.a"
+		ai_chance = { 
+			factor = 75
+			modifier = {
+				factor = 99
+				ruler_has_personality = industrious_personality
+			}
+		}
+		add_base_production = -2
+		change_trade_goods = iron
+		add_trade_modifier = {
+			who = owner
+			duration = 1825
+			power = -5
+			key = ou_surrey_cloth_decline_tt
+		}
+		owner = { add_prestige = -5 }
+		4371 = { add_base_production = 1 }
+	}
+	option = {
+		name =  "omnia_universalis_events.43.b"
+		ai_chance = { factor = 25 }
+		owner = {
+			add_years_of_income = -1
+			add_dip_power = -100
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.43.c"
+		ai_chance = { factor = 99 }
+		highlight = yes
+		trigger = { owner = { ruler_has_personality = entrepreneur_personality } }
+		change_trade_goods = iron
+		add_base_production = 3
+		owner = {
+			add_dip_power = -200
+			add_years_of_income = -1.5
+		}
+		4371 = { add_base_production = 2 }
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.44
+	title = "omnia_universalis_events.44.title"
+	desc = "omnia_universalis_events.44.desc"
+	picture = EUROPEAN_REFUGEES_eventPicture
+	fire_only_once = no
+	trigger = {
+		province_id = 4954
+		NOT = { devastation = 10 }
+	}
+	mean_time_to_happen = { years = 224 }
+	option = {
+		name =  "omnia_universalis_events.44.a"
+		ai_chance = { 
+			factor = 50
+			modifier = {
+				factor = 99
+				OR = {
+					ruler_has_personality = just_personality
+					ruler_has_personality = righteous_personality
+					ruler_has_personality = kind_hearted_personality
+					ruler_has_personality = benevolent_personality
+					ruler_has_personality = humane_personality
+				}
+			}
+		}
+		owner = { 
+			add_years_of_income = -1
+			add_adm_power = -100
+		}
+		add_devastation = 10
+	}
+	option = {
+		name =  "omnia_universalis_events.44.b"
+		ai_chance = { factor = 50 }
+		owner = { add_prestige = -5 }
+		add_base_tax = -1
+		add_base_production = -1
+		add_base_manpower = -1
+		add_devastation = 25
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.45
+	title = "omnia_universalis_events.45.title"
+	desc = "omnia_universalis_events.45.desc"
+	picture = CITY_VIEW_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 4977
+		is_capital = no
+		has_owner_religion = yes
+		base_tax = 3
+		base_production = 2
+		base_manpower = 2
+		owner = {
+			capital_scope = { has_owner_religion = yes }
+			OR = {
+				religion = protestant
+				religion = reformed
+			}
+		}
+	}
+	mean_time_to_happen = { months = 12 }
+	option = {
+		name =  "omnia_universalis_events.45.a"
+		ai_chance = {  factor = 1 }
+		add_base_tax = -2
+		add_base_production = -1
+		add_base_manpower = -1
+		add_local_autonomy = -20
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		owner = {
+			add_prestige = 10
+			capital_scope = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.45.b"
+		trigger = { owner = { ruler_has_personality = zealot_personality } }
+		highlight = yes
+		ai_chance = { factor = 99 }
+		add_base_tax = -1
+		add_base_production = -1
+		add_base_manpower = -1
+		add_local_autonomy = -25
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 25
+		}
+		owner = {
+			add_prestige = 25
+			capital_scope = {
+				add_base_tax = 2
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+		}
+	}
+}
+
+province_event = {
+	id = omnia_universalis_events.46
+	title = "omnia_universalis_events.46.title"
+	desc = "omnia_universalis_events.46.desc"
+	picture = SMUGGLERS_eventPicture
+	fire_only_once = yes
+	trigger = {
+		province_id = 5028
+		owned_by = TUR
+		is_core = TUR
+		NOT = { unrest = 1 }
+	}
+	mean_time_to_happen = { years = 70 }
+	option = {
+		name =  "omnia_universalis_events.46.a"
+		ai_chance = { 
+			factor = 24
+			modifier = {
+				factor = 75
+				owner = { ruler_has_personality = greedy_personality }
+			}
+		}
+		add_base_tax = -1
+		owner = {
+			add_years_of_income = 5
+			add_corruption = 2
+			add_inflation = 5
+			add_mil_power = -10
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.46.b"
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 99
+				owner = { ruler_has_personality = righteous_personality }
+			}
+		}
+		add_base_tax = 1
+		add_base_production = 1
+		add_base_manpower = 1
+		add_local_autonomy = 25
+		owner = {
+			add_years_of_income = 4
+			add_inflation = 4
+			add_legitimacy = -10
+			add_mil_power = 10
+			add_adm_power = 10
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = -5
+			}
+			add_estate_loyalty = {
+				estate = estate_church
+				loyalty = 5
+			}
+			add_estate_loyalty = {
+				estate = estate_dhimmi
+				loyalty = 5
+			}
+		}
+	}
+	option = {
+		name =  "omnia_universalis_events.46.c"
+		ai_chance = { factor = 1 }
+		add_base_tax = 2
+		add_base_production = 2
+		add_base_manpower = 2
+		add_local_autonomy = 50
+		owner = { 
+			add_stability = 1
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = -10
+			}
+			add_estate_loyalty = {
+				estate = estate_church
+				loyalty = -5
+			}
+			add_estate_loyalty = {
+				estate = estate_dhimmi
+				loyalty = 10
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.47
+	title = "omnia_universalis_events.47.title"
+	desc = "omnia_universalis_events.47.desc"
+	picture = DIPLOMACY_eventPicture
+	goto = 5050
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = { #This is necessary because it breaks the whole disaster if you wait until you have defeated the initial pretender rebels before clicking the option.
+			if = {
+				limit = {
+					any_owned_province = {
+						any_neighbor_province = {
+							owned_by = FROM
+						}
+						unit_in_siege = no
+					}
+				}
+				random_owned_province = {
+					limit = {
+						any_neighbor_province = {
+							owned_by = FROM
+						}
+						unit_in_siege = no
+					}
+					save_event_target_as = the_province
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 1
+						friend = FROM
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							any_neighbor_province = {
+								owned_by = FROM
+							}
+							unit_in_siege = no
+						}
+					}
+					any_owned_province = {
+						has_port = yes
+						unit_in_siege = no
+						if = {
+							limit = {
+								ROOT = {
+									capital_scope = {
+										region = british_isles_region
+									}
+								}
+							}
+							region = british_isles_region
+						}
+					}
+				}
+				random_owned_province = {
+					limit = {
+						has_port = yes
+						unit_in_siege = no
+						if = {
+							limit = {
+								ROOT = {
+									capital_scope = {
+										region = british_isles_region
+									}
+								}
+							}
+							region = british_isles_region
+						}
+					}
+					save_event_target_as = the_province
+					spawn_rebels = {
+						type = pretender_rebels
+						size = 1
+						friend = FROM
+					}
+				}
+			}
+		}
+	}
+	option = {		# How dare they!
+		name = "omnia_universalis_events.47.a"
+		ai_chance = { factor = 100 }
+		add_prestige = -10
+		custom_tooltip = ou_lancastrians_jersey_deal_tt
+		tooltip = {
+			event_target:the_province = {
+				spawn_rebels = {
+					type = pretender_rebels
+					size = 1
+					friend = FROM
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.48
+	title = "omnia_universalis_events.48.title"
+	desc = "omnia_universalis_events.48.desc"
+	picture = DIPLOMACY_eventPicture
+	goto = 5050
+	major = yes
+	major_trigger = { capital_scope = { superregion = europe_superregion } }
+	fire_only_once = yes
+	trigger = {
+		tag = ENG
+		NOT = { has_disaster = war_of_the_roses }
+		country_or_subject_holds = 5050
+		dynasty = "York"
+		FRA = { exists = yes }
+		has_global_flag = ou_france_promised_channel_islands
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name =  "omnia_universalis_events.48.a"
+		ai_chance = {  factor = 60 }
+		5050 = { cede_province = FRA }
+		add_prestige = -10
+		add_trust = {
+			who = FRA
+			value = 25
+			mutual = yes
+		}
+		set_global_flag = ou_contract_upheld
+	}
+	option = {
+		name =  "omnia_universalis_events.48.b"
+		ai_chance = { factor = 25 }
+		add_prestige = -25
+		add_country_modifier = {
+			name = ou_dishonoured_contract
+			duration = 3650
+		}
+		FRA = {
+			add_trust = {
+				who = ROOT
+				value = -25
+			}
+		}
+		tooltip = { FRA = { add_claim = 5050 } }
+		hidden_effect = { 
+			FRA = {
+				country_event = {
+					id = omnia_universalis_events.49
+					days = 2
+					random = 1
+				}
+			}
+		}
+		custom_tooltip = flavor_fra.6.a.tt
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.49
+	title = "omnia_universalis_events.49.title"
+	desc = {
+		trigger = { 5050 = { country_or_subject_holds = FROM } }
+		desc = "omnia_universalis_events.49.desc.a"
+	}
+	desc = {
+		trigger = { NOT = {  5050 = { country_or_subject_holds = FROM } } }
+		desc = "omnia_universalis_events.49.desc.b"
+	}
+	picture = DIPLOMACY_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { superregion = europe_superregion } }
+	goto = 5050
+	is_triggered_only = yes
+	option = {		# How dare they!
+		name = "omnia_universalis_events.49.a"
+		ai_chance = { factor = 25 }
+		add_prestige = -5
+		add_truce_with = ENG
+	}
+	option = {
+		name = "omnia_universalis_events.49.b"
+		ai_chance = {
+			factor = 75 #Shouldn't take this from them really.
+			modifier = {
+				factor = 1
+				is_at_war = yes
+			}
+			modifier = {
+				factor = 1
+				has_any_disaster = yes
+			}
+		}
+		custom_tooltip = ou_resumption_of_war_tt
+		hidden_effect = {
+			ENG = {
+				if = {
+					limit = { has_global_flag = eng_had_end_of_hundred_years_war }
+					declare_war_with_cb = {
+						who = FRA
+						casus_belli = cb_humiliate_rival_rotw
+					}
+					else = {
+						declare_war_with_cb = {
+							who = FRA
+							casus_belli = cb_hundred_years_war
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.50
+	title = "omnia_universalis_events.50.title"
+	desc = "omnia_universalis_events.50.desc"
+	picture = DIPLOMACY_eventPicture
+	goto = 5050
+	major = yes
+	major_trigger = { capital_scope = { superregion = europe_superregion } }
+	fire_only_once = yes
+	trigger = {
+		tag = ENG
+		NOT = { has_disaster = war_of_the_roses }
+		NOT = { country_or_subject_holds = 5050 }
+		dynasty = "York"
+		FRA = { exists = yes }
+		has_global_flag = ou_france_promised_channel_islands
+		NOT = { has_global_flag = ou_contract_upheld }
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name =  "omnia_universalis_events.50.a"
+		ai_chance = { factor = 1 }
+		add_prestige = -50
+		add_country_modifier = {
+			name = ou_dishonoured_contract
+			duration = 7300
+		}
+		FRA = {
+			add_trust = {
+				who = ROOT
+				value = -50
+			}
+		}
+		FRA = { add_permanent_claim = 5050 }
+		hidden_effect = {  FRA = { country_event = { id = omnia_universalis_events.49 } } }
+		custom_tooltip = flavor_fra.6.a.tt
+	}
+	option = {
+		name = "omnia_universalis_events.50.b"
+		ai_chance = { factor = 99 }
+		highlight = yes
+		trigger = {
+			ruler_has_personality = silver_tongue_personality
+			hidden_trigger = { FRA = { ai = yes } }
+		}
+		add_prestige = -5
+		FRA = {
+			add_trust = {
+				who = ROOT
+				value = -10
+			}
+		}
+		add_treasury = -100
+		FRA = { add_treasury = 100 }
+		add_corruption = 2
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.51
+	title = "omnia_universalis_events.51.title"
+	desc = "omnia_universalis_events.51.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { superregion = europe_superregion } }
+	fire_only_once = yes
+	trigger = {
+		tag = FRA
+		has_institution = renaissance
+		calc_true_if = {
+			all_subject_country = {
+				is_subject_of_type_with_overlord = {
+					who = ROOT
+					type = appanage
+				}
+				NOT = { num_of_cities = 2 }
+				NOT = { total_development = 15 }
+			}
+			amount = 3
+		}
+		NOT = {
+			any_subject_country = {
+				is_subject_of_type_with_overlord = {
+					who = ROOT
+					type = appanage
+				}
+				NOT = { num_of_cities = 2 }
+				NOT = { total_development = 15 }
+				ai = no
+			}
+		}
+	}
+	mean_time_to_happen = { months = 120 }
+	option = {
+		name =  "omnia_universalis_events.51.a"
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 99
+				OR = {
+					ruler_has_personality = lawgiver_personality
+					ruler_has_personality = reformist_personality
+				}
+			}
+		}
+		custom_tooltip = ou_inherit_appanages_tt
+		hidden_effect = {
+			every_subject_country = {
+				limit = {
+					is_subject_of_type_with_overlord = {
+						who = ROOT
+						type = appanage
+					}
+					NOT = { num_of_cities = 2 }
+					NOT = { total_development = 15 }
+				}
+				ROOT = { inherit = PREV }
+			}
+		}
+		add_stability = -2
+		add_adm_power = -100
+		add_dip_power = -150
+		add_mil_power = -50
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -20
+		}
+		change_government_reform_progress = 20
+	}
+	option = {
+		name = "omnia_universalis_events.51.b"
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 99
+				ruler_has_personality = craven_personality
+			}
+		}
+		add_prestige = -10
+		change_government_reform_progress = -50
+		add_dip_power = 100
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 5
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.52
+	title = "omnia_universalis_events.52.title"
+	desc = "omnia_universalis_events.52.desc"
+	picture = DIPLOMACY_eventPicture
+	major = yes
+	major_trigger = { 
+		NOT = {
+			capital_distance = {
+				who = ROOT
+				distance = 200
+			}
+		}
+	}
+	fire_only_once = yes
+	trigger = {
+		tag = BOH
+		LNC = {
+			is_subject_of_type_with_overlord = {
+				who = BOH
+				type = personal_union
+			}
+		}
+		is_subject = no
+		NOT = { has_ruler = "Landfriedens" }
+	}
+	mean_time_to_happen = { months = 288 }
+	option = {
+		name =  "omnia_universalis_events.52.a"
+		ai_chance = { factor = 75 }
+		vassalize = LNC
+		LNC = {
+			define_ruler = {
+				name = "Frederick"
+				dynasty = "Piast"
+				claim = 75
+				adm = 5
+				dip = 4
+				mil = 3
+				culture = schlesian
+				religion = catholic
+			}
+		}
+		add_legitimacy = 10
+		add_adm_power = -50
+		add_dip_power = -50
+	}
+	option = {
+		name = "omnia_universalis_events.52.b"
+		ai_chance = { factor = 15 }
+		LNC = {
+			grant_independence = yes
+			define_ruler = {
+				name = "Frederick"
+				dynasty = "Piast"
+				claim = 75
+				adm = 5
+				dip = 4
+				mil = 3
+				culture = schlesian
+				religion = catholic
+			}
+		}
+		add_legitimacy = 20
+		add_prestige = 10
+		add_adm_power = -50
+		add_dip_power = 50
+	}
+	option = {
+		name = "omnia_universalis_events.52.c"
+		ai_chance = { factor = 9 }
+		trigger = { LNC = { ai = yes } }
+		inherit = LNC
+		add_legitimacy = -20
+		add_prestige = -10
+		add_adm_power = -100
+		add_dip_power = -100
+		4238 = {
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+				culture = schlesian
+				religion = catholic
+				unrest = 10
+				win = yes
+				friend = LNC
+				leader_dynasty = "Piast"
+				seperatists_target = LNC
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.52.d"
+		ai_chance = { factor = 1 }
+		add_legitimacy = -10
+		4238 = {
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 2
+				culture = schlesian
+				religion = catholic
+				unrest = 10
+				win = yes
+				leader_dynasty = "Piast"
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.52.e"
+		ai_chance = { factor = 99 }
+		trigger = {
+			calc_true_if = {
+				all_subject_country = {
+					NOT = { num_of_cities = 6 }
+					capital_scope = { area = silesia_area }
+				}
+				amount = 2
+			}
+		}
+		LNC = { change_tag = SIL }
+		every_known_country = {
+			limit = {
+				is_subject_of = ROOT
+				NOT = { num_of_cities = 6 }
+				NOT = { tag = SIL }
+				capital_scope = { area = silesia_area }
+			}
+			SIL = { inherit = PREV }
+		}
+		add_legitimacy = -20
+		add_dip_power = -100
+		add_adm_power = -100
+		4238 = {
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 3
+				culture = schlesian
+				religion = catholic
+				unrest = 10
+				win = yes
+				leader_dynasty = "Piast"
+			}
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.53
+	title = "omnia_universalis_events.53.title"
+	desc = "omnia_universalis_events.53.desc"
+	picture = CONQUEST_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { region = low_countries_region } }
+	fire_only_once = yes
+	trigger = {
+		tag = PAD
+		NOT = { has_ruler = "Dietrich II von Mors" }
+		is_subject_of_type_with_overlord = {
+			who = KOL
+			type = personal_union
+		}
+		government = theocracy
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name =  "omnia_universalis_events.53.a"
+		ai_chance = { factor = 75 }
+		grant_independence = yes
+		add_prestige = 10
+		add_adm_power = 50
+		add_mil_power = 100
+		custom_tooltip = ou_cologne_may_retaliate_tt
+		KOL = {
+			add_casus_belli = {
+				who = ROOT
+				type = cb_restore_personal_union
+			}
+			country_event = {
+				id = omnia_universalis_events.54
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.53.b"
+		ai_chance = { factor = 25 }
+		add_dip_power = 50
+		add_prestige = -5
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.54
+	title = "omnia_universalis_events.54.title"
+	desc = "omnia_universalis_events.54.desc"
+	picture = CONQUEST_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { region = low_countries_region } }
+	is_triggered_only = yes
+	option = {
+		name =  "omnia_universalis_events.54.a"
+		ai_chance = {  factor = 75 }
+		if = {
+			limit = {
+				has_casus_belli = {
+					type = cb_restore_personal_union
+					target = PAD
+				}
+			}
+			remove_casus_belli = {
+				target = PAD
+				type = cb_restore_personal_union
+			}
+		}
+		add_dip_power = -50
+		custom_tooltip = ou_paderborn_remains_independent_tt
+	}
+	option = {
+		name =  "omnia_universalis_events.54.b"
+		ai_chance = {  factor = 25 }
+		declare_war_with_cb = {
+			who = PAD
+			casus_belli = cb_restore_personal_union
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.55
+	title = "omnia_universalis_events.55.title"
+	desc = "omnia_universalis_events.55.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = HUN
+		has_ruler = "Janos"
+		NOT = { senior_union_with = TRA }
+		TRA = {
+			has_ruler = "Janos"
+			is_subject_of = ROOT
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.55.a"
+		ai_chance = { factor = 75 }
+		trigger = { TRA = { ai = yes } }
+		add_dip_power = -50
+		inherit = TRA
+		add_legitimacy = -5
+	}
+	option = {
+		name = "omnia_universalis_events.55.b"
+		ai_chance = { factor = 15 }
+		create_union = TRA
+		add_prestige = -10
+		add_legitimacy = -20
+	}
+	option = {
+		name = "omnia_universalis_events.55.c"
+		ai_chance = { factor = 9 }
+		TRA = {
+			define_ruler = {
+				min_age = 25
+				max_age = 50
+				claim = 60
+				adm = 1
+				dip = 1
+				mil = 2
+				culture = transylvanian
+			}
+		}
+		add_prestige = -20
+		add_legitimacy = -10
+	}
+	option = {
+		name = "omnia_universalis_events.55.d"
+		ai_chance = { factor = 1 }
+		add_dip_power = -50
+		TRA = {
+			grant_independence = yes 
+			define_ruler = { claim = 60 }
+		}
+		add_prestige = -10
+		add_legitimacy = 20
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.56
+	title = "omnia_universalis_events.56.title"
+	desc = "omnia_universalis_events.56.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = TRA
+		has_ruler = "Janos"
+		NOT = { senior_union_with = HUN }
+		HUN = {
+			has_ruler = "Janos"
+			is_subject_of = ROOT
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.56.a"
+		ai_chance = { factor = 75 }
+		trigger = { HUN = { ai = yes } }
+		add_dip_power = -100
+		inherit = HUN
+		add_legitimacy = -20
+		change_tag = HUN
+	}
+	option = {
+		name = "omnia_universalis_events.56.b"
+		ai_chance = { factor = 2 }
+		create_union = HUN
+		add_prestige = 20
+	}
+	option = {
+		name = "omnia_universalis_events.56.c"
+		ai_chance = { factor = 8 }
+		HUN = {
+			define_ruler = {
+				min_age = 25
+				max_age = 50
+				claim = 60
+				adm = 1
+				dip = 1
+				mil = 2
+				culture = hungarian
+			}
+		}
+		add_prestige = 10
+	}
+	option = {
+		name = "omnia_universalis_events.56.d"
+		ai_chance = { factor = 15 }
+		add_dip_power = -50
+		HUN = {
+			grant_independence = yes 
+			define_ruler = { claim = 60 }
+		}
+		add_prestige = -10
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.57
+	title = "omnia_universalis_events.57.title"
+	desc = "omnia_universalis_events.57.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = HUN
+		has_ruler = "Janos"
+		dynasty = "Hunyadi"
+		NOT = { is_subject_of = TRA }
+		NOT = {
+			ai = yes
+			TRA = { ai = no }
+		}
+		TRA = {
+			exists = yes
+			has_ruler = "Janos"
+			dynasty = "Hunyadi"
+			NOT = { is_subject_of = ROOT }
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.57.a"
+		ai_chance = { factor = 19 }
+		trigger = { TRA = { ai = yes } }
+		add_dip_power = -100
+		inherit = TRA
+		add_prestige = -10
+		add_legitimacy = -20
+	}
+	option = {
+		name = "omnia_universalis_events.57.b"
+		ai_chance = { factor = 75 }
+		create_union = TRA
+		add_prestige = 10
+		add_legitimacy = 10
+	}
+	option = {
+		name = "omnia_universalis_events.57.c"
+		ai_chance = { factor = 5 }
+		TRA = {
+			define_ruler = {
+				min_age = 25
+				max_age = 50
+				claim = 60
+				adm = 1
+				dip = 1
+				mil = 2
+				culture = transylvanian
+			}
+		}
+		vassalize = TRA
+		add_prestige = -5
+		add_legitimacy = -10
+	}
+	option = {
+		name = "omnia_universalis_events.57.d"
+		ai_chance = { factor = 1 }
+		add_dip_power = 50
+		TRA = { define_ruler = { claim = 60 } }
+		add_prestige = -5
+		add_legitimacy = -20
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.58
+	title = "omnia_universalis_events.58.title"
+	desc = "omnia_universalis_events.58.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { continent = europe } }
+	fire_only_once = yes
+	trigger = {
+		tag = TRA
+		ai = no
+		has_ruler = "Janos"
+		NOT = { is_subject_of = HUN }
+		HUN = {
+			has_ruler = "Janos"
+			NOT = { is_subject_of = ROOT }
+			ai = yes
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.58.a"
+		ai_chance = { factor = 75 }
+		trigger = { HUN = { ai = yes } }
+		add_dip_power = -200
+		inherit = HUN
+		add_prestige = -20
+		add_legitimacy = -50
+		change_tag = HUN
+	}
+	option = {
+		name = "omnia_universalis_events.58.b"
+		ai_chance = { factor = 25 }
+		create_union = HUN
+		add_prestige = 20
+	}
+	option = {
+		name = "omnia_universalis_events.58.c"
+		ai_chance = { factor = 8 }
+		HUN = {
+			define_ruler = {
+				min_age = 25
+				max_age = 50
+				claim = 60
+				adm = 1
+				dip = 1
+				mil = 2
+				culture = transylvanian
+			}
+		}
+		vassalize = HUN
+		add_prestige = 10
+	}
+	option = {
+		name = "omnia_universalis_events.58.d"
+		ai_chance = { factor = 15 }
+		add_dip_power = 50
+		HUN = { define_ruler = { claim = 60 } }
+		add_prestige = -10
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.59
+	title = "omnia_universalis_events.59.title"
+	desc = "omnia_universalis_events.59.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { capital_scope = { superregion = southern_europe_superregion } }
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			AND = {
+				tag = CRO
+				NOT = {
+					AND = {
+						ai = yes
+						SLA = { ai = no }
+					}
+				}
+			}
+			AND = {
+				tag = SLA
+				ai = no
+				CRO = { ai = yes }
+			}
+		}
+		CRO = { junior_union_with = HUN }
+		SLA = { junior_union_with = HUN }
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name =  "omnia_universalis_events.59.a"
+		ai_chance = { factor = 75 }
+		trigger = { tag = CRO }
+		add_dip_power = -50
+		inherit = SLA
+		add_prestige = 10
+	}
+	option = {
+		name =  "omnia_universalis_events.59.b"
+		ai_chance = { factor = 75 }
+		trigger = { tag = SLA }
+		add_dip_power = -150
+		inherit = CRO
+		add_prestige = 20
+		change_tag = CRO
+	}
+	option = {
+		name = "omnia_universalis_events.59.c"
+		ai_chance = { factor = 25 }
+		add_adm_power = 25
+		add_prestige = -5
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.60
+	title = "omnia_universalis_events.60.title"
+	desc = "omnia_universalis_events.60.desc"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	major = yes
+	major_trigger = { is_part_of_hre = yes }
+	fire_only_once = yes
+	trigger = {
+		tag = CLB
+		has_ruler = "William I"
+		dynasty = "von Welf"
+		GIE = {
+			has_ruler = "William I"
+			dynasty = "von Welf"
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		name =  "omnia_universalis_events.60.a"
+		ai_chance = { factor = 75 }
+		add_dip_power = -25
+		create_union = GIE
+		add_prestige = -5
+	}
+	option = {
+		name =  "omnia_universalis_events.60.b"
+		ai_chance = { factor = 15 }
+		add_dip_power = -50
+		add_prestige = 10
+		GIE = {
+			define_ruler = {
+				dynasty = "von Welf"
+				min_age = 20
+				max_age = 60
+				claim = 45
+			}
+		}
+	}
+	option = {
+		name = "omnia_universalis_events.60.c"
+		ai_chance = { factor = 9 }
+		trigger = { GIE = { ai = no } }
+		add_dip_power = -100
+		inherit = GIE
+		add_prestige = -10
+	}
+	option = {
+		name = "omnia_universalis_events.60.d"
+		ai_chance = { factor = 1 }
+		add_dip_power = -25
+		add_prestige = -10
+		GIE = {
+			define_ruler = {
+				dynasty = "von Welf"
+				claim = 40
+			}
+			grant_independence = yes
+		}
+	}
+	immediate = { hidden_effect = { set_country_flag = ou_otto_is_dead } }
+}
+
+country_event = {
+	id = omnia_universalis_events.61
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CLB
+		NOT = { has_country_flag = ou_otto_is_dead }
+		OR = {
+			has_ruler = "William I"
+			GIE = { has_heir = "William" }
+		}
+		if = {
+			limit = { has_ruler = "William I" }
+			NOT = { GIE = { has_heir = "William" } }
+		}
+		if = {
+			limit = { GIE = { has_heir = "William" } }
+			NOT = { has_ruler = "William I" }
+		}
+	}
+	mean_time_to_happen = { days = 1 }
+	option = {
+		ai_chance = { factor = 100 }
+		ROOT = {
+			limit = { has_ruler = "William I" }
+			kill_ruler = yes
+		}
+		GIE = {
+			limit = { has_heir = "William I" }
+			kill_heir = { allow_new_heir = yes }
+		}
+	}
+}
+
+country_event = {
+	id = omnia_universalis_events.62
+	title = "omnia_universalis_events.62.title"
+	desc = "omnia_universalis_events.62.desc"
+	picture = CONQUEST_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = WUR
+		4713 = {
+			owned_by = ROOT
+			is_capital = no
+		}
+	}
+	mean_time_to_happen = { months = 1 }
+	option = {
+		name =  "omnia_universalis_events.62.a"
+		ai_chance = { factor = 75 }
+		4713 = { add_local_autonomy = 75 }
+	}
+	option = {
+		name =  "omnia_universalis_events.62.b"
+		ai_chance = { factor = 15 }
+		4713 = { add_local_autonomy = 50 }
+		add_adm_power = -25
+		add_dip_power = -50
+	}
+	option = {
+		name = "omnia_universalis_events.62.c"
+		ai_chance = { factor = 10 }
+		4713 = {
+			spawn_rebels = {
+				type = pretender_rebels
+				size = 1
+				culture = swabian
+				religion = catholic
+				win = yes
+				leader = "Ludwig"
+				leader_dynasty = "von Wurttemberg"
+			}
+		}
+	}
+}

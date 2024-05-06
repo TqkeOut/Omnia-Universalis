@@ -1,0 +1,113 @@
+country_decisions = {
+
+	form_anglo_dutch_union_nation = {
+		major = yes
+		potential = {
+			OR = {
+				AND = {
+					tag = ENG
+					NED = { ai = yes }
+					OR = { 
+						senior_union_with = NED
+						succession_claim = NED
+						has_casus_belli = {
+							target = NED
+							type = cb_restore_personal_union
+						}
+					}
+				}
+				AND = {
+					tag = NED
+					ENG = { ai = yes }
+					OR = { 
+						senior_union_with = ENG
+						succession_claim = ENG
+						has_casus_belli = {
+							target = ENG
+							type = cb_restore_personal_union
+						}
+					}
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				owned_by = NED
+				owned_by = ENG
+			}
+		}
+		allow = {
+			NOT = { exists = ENU }
+			dip_power = 200
+			is_at_war = no
+			OR = {
+				AND = {
+					tag = ENG
+					NED = {
+						junior_union_with = ROOT
+						NOT = { liberty_desire = 10 }
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+						reverse_has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						years_in_union_under = {
+							who = ROOT
+							years = 25
+						}
+						trust = {
+							who = ROOT
+							value = 70
+						}
+					}
+				}
+				AND = {
+					tag = NED
+					ENG = {
+						junior_union_with = ROOT
+						NOT = { liberty_desire = 10 }
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+						reverse_has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						years_in_union_under = {
+							who = ROOT
+							years = 25
+						}
+						trust = {
+							who = ROOT
+							value = 70
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			change_tag = ENU
+			if = {
+				limit = { tag = ENG }
+				inherit = NED
+				custom_tooltip = ou_anglo_dutch_union_formation_explanation_tt
+				else = { inherit = ENG }
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+}

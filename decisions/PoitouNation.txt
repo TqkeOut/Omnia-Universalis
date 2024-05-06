@@ -1,0 +1,42 @@
+country_decisions = {
+
+	form_poitou_nation = {
+		major = yes
+		potential = {
+			NOT = { tag = POI }
+			primary_culture = cosmopolitan_french
+			capital_scope = { area = poitou_area }
+		}
+		provinces_to_highlight = {
+			area = poitou_area
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = POI }
+			primary_culture = cosmopolitan_french
+			capital_scope = { area = poitou_area }
+			is_at_war = no
+			poitou_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			change_tag = POI
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			if = {
+				limit = { NOT = { capital_scope = { province_id = 180 } } }
+				set_capital = 180
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+}

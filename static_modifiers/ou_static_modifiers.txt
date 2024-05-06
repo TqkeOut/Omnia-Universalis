@@ -1,0 +1,3 @@
+appanage_subject = {
+	land_forcelimit_modifier = -0.5
+}

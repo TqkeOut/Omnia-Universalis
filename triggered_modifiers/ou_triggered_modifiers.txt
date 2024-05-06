@@ -1,0 +1,126 @@
+ou_rurikovich_loyalty = {
+	potential = {
+		is_subject = yes
+		dynasty = Rurikovich
+		overlord = { dynasty = "Rurikovich" }
+		capital_scope = { continent = europe }
+	}
+	trigger = {
+		is_subject = yes
+		dynasty = Rurikovich
+		overlord = { dynasty = "Rurikovich" }
+		capital_scope = { continent = europe }
+	}
+	liberty_desire = -30
+}
+
+ou_french_appanages_14 = {
+	potential = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 2
+		}
+	}
+	trigger = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 14
+		}
+	}
+	diplomatic_upkeep = 6
+}
+
+ou_french_appanages_12 = {
+	potential = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 2
+		}
+	}
+	trigger = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 12
+		}
+		NOT = {
+			calc_true_if = {
+				FRA = { all_subject_country = { is_subject_of_type = appanage } }
+				amount = 14
+			}
+		}
+	}
+	diplomatic_upkeep = 5
+}
+
+ou_french_appanages_10 = {
+	potential = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 2
+		}
+	}
+	trigger = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 10
+		}
+		NOT = {
+			calc_true_if = {
+				FRA = { all_subject_country = { is_subject_of_type = appanage } }
+				amount = 12
+			}
+		}
+	}
+	diplomatic_upkeep = 4
+}
+
+ou_french_appanages_9 = {
+	potential = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 2
+		}
+	}
+	trigger = {
+		tag = FRA
+		current_age = age_of_discovery
+		calc_true_if = {
+			FRA = { all_subject_country = { is_subject_of_type = appanage } }
+			amount = 9
+		}
+		NOT = {
+			calc_true_if = {
+				FRA = { all_subject_country = { is_subject_of_type = appanage } }
+				amount = 10
+			}
+		}
+	}
+	diplomatic_upkeep = 3
+}
+
+ou_ladislaus_loyalty = {
+	potential = {
+		tag = HUN
+		has_ruler = "Ladislaus Posthumus"
+	}
+	trigger = {
+		tag = HUN
+		is_lesser_in_union = yes
+		has_ruler = "Ladislaus Posthumus"
+	}
+	liberty_desire = -100
+}

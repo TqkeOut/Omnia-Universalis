@@ -1,0 +1,44 @@
+country_decisions = {
+
+	form_galich_nation = {
+		major = yes
+		potential = {
+			NOT = { tag = GLC }
+			OR = {
+				primary_culture = russian
+				primary_culture = uralic
+			}
+			capital_scope = { area = galich_area }
+		}
+		provinces_to_highlight = {
+			area = galich_area
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = GLC }
+			OR = {
+				primary_culture = russian
+				primary_culture = uralic
+			}
+			capital_scope = { area = galich_area }
+			is_at_war = no
+			galich_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			change_tag = GLC
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+}

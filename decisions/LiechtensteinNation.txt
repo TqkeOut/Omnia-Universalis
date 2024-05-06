@@ -1,0 +1,30 @@
+country_decisions = {
+
+	form_liechtenstein_nation = {
+		major = yes
+		potential = {
+			tag = VAD
+		}
+		provinces_to_highlight = {
+			province_id = 4959
+		}
+		allow = {
+			NOT = { exists = LTS }
+			tag = VAD
+			dynasty = "von Liechtenstein"
+			capital = 4959
+			primary_culture = swiss
+			is_at_war = no
+		}
+		effect = {
+			change_tag = LTS
+			swap_non_generic_missions = yes
+			add_prestige = 25
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+}

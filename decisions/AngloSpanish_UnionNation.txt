@@ -1,0 +1,113 @@
+country_decisions = {
+
+	form_anglo_spanish_union_nation = {
+		major = yes
+		potential = {
+			OR = {
+				AND = {
+					tag = ENG
+					SPA = { ai = yes }
+					OR = { 
+						senior_union_with = SPA
+						succession_claim = SPA
+						has_casus_belli = {
+							target = SPA
+							type = cb_restore_personal_union
+						}
+					}
+				}
+				AND = {
+					tag = SPA
+					ENG = { ai = yes }
+					OR = { 
+						senior_union_with = ENG
+						succession_claim = ENG
+						has_casus_belli = {
+							target = ENG
+							type = cb_restore_personal_union
+						}
+					}
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				owned_by = SPA
+				owned_by = ENG
+			}
+		}
+		allow = {
+			NOT = { exists = ENU }
+			dip_power = 200
+			is_at_war = no
+			OR = {
+				AND = {
+					tag = ENG
+					SPA = {
+						junior_union_with = ROOT
+						NOT = { liberty_desire = 10 }
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+						reverse_has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						years_in_union_under = {
+							who = ROOT
+							years = 25
+						}
+						trust = {
+							who = ROOT
+							value = 70
+						}
+					}
+				}
+				AND = {
+					tag = SPA
+					ENG = {
+						junior_union_with = ROOT
+						NOT = { liberty_desire = 10 }
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+						reverse_has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						years_in_union_under = {
+							who = ROOT
+							years = 25
+						}
+						trust = {
+							who = ROOT
+							value = 70
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			change_tag = ESU
+			if = {
+				limit = { tag = ENG }
+				inherit = SPA
+				custom_tooltip = ou_anglo_spanish_union_formation_explanation_tt
+				else = { inherit = ENG }
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+}

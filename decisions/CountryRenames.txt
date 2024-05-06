@@ -1,0 +1,228 @@
+country_decisions = {
+
+	ou_rename_to_czechia = {
+		major = yes
+		potential = {
+			tag = BOH
+			NOT = { has_country_flag = ou_renamed_to_czechia }
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = bohemia_area
+				area = czechia_area
+				area = erzgebirge_area
+				area = moravia_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			tag = BOH
+			NOT = { is_part_of_hre = yes }
+			is_at_war = no
+			owns_core_province = 266
+			bohemia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			czechia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			erzgebirge_area = {
+				type = all
+				owned_by = ROOT
+			}
+			moravia_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			override_country_name = ou_czechia
+			set_capital = 266
+			add_prestige = 10
+			set_country_flag = ou_renamed_to_czechia
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200 #
+	}
+	
+	ou_rename_to_latvia = {
+		major = yes
+		potential = {
+			tag = LTG
+			primary_culture = latvian
+			NOT = { has_country_flag = ou_renamed_to_latvia }
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = livonia_area
+				area = curonia_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			tag = LTG
+			primary_culture = latvian
+			government = republic
+			is_at_war = no
+			owns_core_province = 38
+			livonia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			curonia_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			override_country_name = ou_latvia
+			set_capital = 38
+			add_prestige = 10
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200 #
+	}
+	
+	ou_rename_to_moldova = {
+		major = yes
+		potential = {
+			tag = MOL
+			primary_culture = romanian
+			NOT = { has_country_flag = ou_renamed_to_moldova }
+		}
+		provinces_to_highlight = {
+			province_id = 2405
+		}
+		allow = {
+			tag = MOL
+			primary_culture = romanian
+			government = republic
+			is_at_war = no
+			owns_core_province = 2405
+		}
+		effect = {
+			override_country_name = ou_moldova
+			set_capital = 2405
+			add_prestige = 10
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200 #
+	}
+	
+	ou_rename_to_slovakia = {
+		major = yes
+		potential = {
+			tag = SLO
+			primary_culture = slovak
+			NOT = { has_country_flag = ou_renamed_to_slovakia }
+		}
+		provinces_to_highlight = {
+			area = slovakia_area
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			tag = SLO
+			primary_culture = slovak
+			government = republic
+			is_at_war = no
+			owns_core_province = 1772
+			slovakia_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			override_country_name = ou_slovakia
+			set_capital = 1772
+			add_prestige = 10
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200 #
+	}
+	
+	ou_rename_to_ukraine = {
+		major = yes
+		potential = {
+			tag = UKR
+			primary_culture = ruthenian
+			NOT = { has_country_flag = ou_renamed_to_ukraine }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 291
+				province_id = 289
+				province_id = 1945
+				area = crimea_area
+				area = east_dniepr_area
+				area = podolia_volhynia_area 
+				area = red_ruthenia_area
+				area = volhynia_area
+				area = west_dniepr_area
+				area = yedisan_area
+				area = zaporizhia_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			tag = UKR
+			primary_culture = ruthenian
+			is_at_war = no
+			owns_core_province = 280
+			owns = 291
+			owns = 289
+			owns = 1945
+			crimea_area = {
+				type = all
+				owned_by = ROOT
+			}
+			east_dniepr_area = {
+				type = all
+				owned_by = ROOT
+			}
+			podolia_volhynia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			red_ruthenia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			volhynia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			west_dniepr_area = {
+				type = all
+				owned_by = ROOT
+			}
+			yedisan_area = {
+				type = all
+				owned_by = ROOT
+			}
+			zaporizhia_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			override_country_name = ou_ukraine
+			set_capital = 280
+			add_prestige = 10
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200 #
+	}
+	
+}

@@ -1,0 +1,271 @@
+# Do not change tags in here without changing every other reference to them.
+# Do not change tags in here without changing every other reference to them.
+# If adding new groups or ideas, make sure they are unique.
+
+### Nation specific idea groups
+
+BOB_ideas = {
+	start = {
+		development_cost = -0.05
+		movement_speed = 0.1
+	}
+	
+	bonus = {
+		global_unrest = -2
+	}	
+
+	trigger = {
+		tag = BOB
+	}
+	free = yes
+	
+	bob_defensiveness = {
+		defensiveness = 0.10
+	}
+	bob_institution_spread_from_true_faith = {
+		institution_spread_from_true_faith = 0.1
+	}
+	bob_global_heretic_missionary_strength = {
+		global_heretic_missionary_strength = 0.02
+	}
+	bob_religious_unity = {
+		religious_unity = 0.1
+	}
+	bob_manpower_in_true_faith_provinces = {
+		manpower_in_true_faith_provinces = 0.2
+	}
+	bob_enforce_religion_cost = {
+		enforce_religion_cost = -0.5
+	}
+	bob_prestige_per_development_from_conversion = {
+		prestige_per_development_from_conversion = 0.5
+	}
+}
+
+VAD_ideas = {
+	start = {
+		global_own_trade_power = 0.2
+		unjustified_demands = -0.1
+	}
+	
+	bonus = {
+		adm_tech_cost_modifier = -0.2
+	}	
+
+	trigger = {
+		tag = VAD
+	}
+	free = yes
+	
+	vad_mercenary_discipline = {
+		mercenary_discipline = 0.05
+	}
+	vad_defensiveness = {
+		defensiveness = 0.05
+	}
+	vad_mil_tech_cost_modifier = {
+		mil_tech_cost_modifier = -0.05
+	}
+	vad_diplomatic_reputation = {
+		diplomatic_reputation = 1
+	}
+	vad_legitimacy = {
+		legitimacy = 1
+	}
+	vad_tolerance_own = {
+		tolerance_own = 1
+	}
+	vad_fire_damage_received = {
+		fire_damage_received = -0.05
+	}
+}
+
+LTS_ideas = {
+	start = {
+		land_attrition = -0.2
+		embracement_cost = -0.2
+	}
+	
+	bonus = {
+		global_prosperity_growth = 0.2
+	}	
+
+	trigger = {
+		tag = LTS
+	}
+	free = yes
+	
+	lts_mercenary_discipline = {
+		mercenary_discipline = 0.1
+	}
+	lts_defensiveness = {
+		defensiveness = 0.1
+	}
+	lts_mil_tech_cost_modifier = {
+		mil_tech_cost_modifier = -0.1 
+	}
+	lts_diplomatic_reputation = {
+		diplomatic_reputation = 2
+	}
+	lts_legitimacy = {
+		legitimacy = 2
+	}
+	lts_tolerance_own = {
+		tolerance_own = 2
+	}
+	lts_fire_damage_received = {
+		fire_damage_received = -0.1
+	}
+}
+
+AEG_ideas = {
+	start = {
+		navy_tradition_decay = -0.02
+		production_efficiency = 0.1
+	}
+	
+	bonus = {
+		sea_repair = yes
+	}
+	
+	trigger = {
+		tag = AEG
+	}
+	free = yes
+	
+	aeg_transport_attrition = {
+		transport_attrition = -0.5
+	}
+	aeg_trade_efficiency = {
+		trade_efficiency = 0.1
+	}
+	aeg_naval_forcelimit_modifier = {
+		naval_forcelimit_modifier = 0.2
+	}
+	aeg_blockade_efficiency = {
+		blockade_efficiency = 0.5
+	}
+	aeg_diplomatic_reputation = {
+		diplomatic_reputation = 1
+	}
+	aeg_regiment_disembark_speed = {
+		regiment_disembark_speed = 0.25
+	}
+	aeg_global_unrest = {
+		global_unrest = -2
+	}
+}
+
+ALP_ideas = {
+	start = {
+		supply_limit_modifier = 0.2
+		defensiveness = 0.25
+	}
+	
+	bonus = {
+		shock_damage_received = -0.1
+	}
+	
+	trigger = {
+		tag = ALP
+	}
+	free = yes
+	
+	alp_num_accepted_cultures = {
+		num_accepted_cultures = 3
+	}
+	alp_fort_maintenance_modifier = {
+		fort_maintenance_modifier = -0.2
+	}
+	alp_build_cost = {
+		build_cost = -0.1
+	}
+	alp_diplomatic_reputation = {
+		diplomatic_reputation = 1
+	}
+	alp_trade_efficiency = {
+		trade_efficiency = 0.1
+	}
+	alp_development_cost = {
+		development_cost = -0.05
+	}
+	alp_land_morale = {
+		land_morale = 0.1
+	}
+}
+
+ENU_ideas = {
+	start = {
+		naval_forcelimit_modifier = 0.50
+		global_unrest = -1 # magna carta, parliament
+	}
+
+	bonus = {
+		naval_morale = 0.1
+	}
+	
+	trigger = {
+		tag = ENU
+	}
+	free = yes		#will be added at load.
+	
+	amsterdam_wisselbank = {
+		inflation_reduction = 0.1
+	}
+	eltham_ordinance = {
+		production_efficiency = 0.1
+	}
+	secretaries_of_state = {
+		diplomatic_upkeep = 1
+	}
+	navigation_acts = {
+		trade_efficiency = 0.1
+	}
+	embrace_humanism = {
+		tolerance_heretic = 3
+	}
+	army_sappers = {
+		siege_ability = 0.10
+	}
+	platoon_fire = {
+		fire_damage = 0.1
+	}
+}
+
+ESU_ideas = {
+	start = {
+		land_morale = 0.15
+		global_unrest = -1 # magna carta, parliament
+	}
+
+	bonus = {
+		naval_morale = 0.1
+	}
+	
+	trigger = {
+		tag = ESU
+	}
+	free = yes		#will be added at load.
+	
+	esu_envoy_travel_time = {
+		envoy_travel_time = -0.5
+	}
+	eltham_ordinance = {
+		production_efficiency = 0.1
+	}
+	esu_global_institution_spread = {
+		global_institution_spread = 0.2
+	}
+	secretaries_of_state = {
+		diplomatic_upkeep = 1
+	}
+	navigation_acts = {
+		trade_efficiency = 0.1
+	}
+	siglo_de_oro = {
+		prestige = 1
+	}
+	esu_possible_dip_policy = { 
+		possible_dip_policy = 2
+	}
+}

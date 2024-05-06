@@ -1,0 +1,45 @@
+country_decisions = {
+
+	succeed_austria_nation = {
+		major = yes
+		potential = {
+			tag = STY
+			dynasty = "von Habsburg"
+			NOT = { has_country_flag = formed_austria_flag }
+			culture = austrian
+		}
+		provinces_to_highlight = {
+			all_province = { owned_by = HAB }
+			province_id = 134
+		}
+		allow = {
+			NOT = { exists = HAB }
+			owns_core_province = 134
+			has_regency = no
+			is_at_war = no
+			is_nomad = no
+			culture = austrian
+			dynasty = "von Habsburg"
+		}
+		effect = {
+			change_tag = HAB
+			set_capital = 134
+			add_prestige = 25
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			swap_non_generic_missions = yes
+			austria_proper_area = {
+				limit = { NOT = { owned_by = ROOT } }
+				add_permanent_claim = HAB
+			}
+			inner_austria_area = {
+				limit = { NOT = { owned_by = ROOT } }
+				add_permanent_claim = HAB
+			}
+			set_country_flag = formed_austria_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+}
